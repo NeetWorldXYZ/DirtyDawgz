@@ -3,9 +3,9 @@ import { Flame } from "lucide-react"
 import { ServicePageLayout } from "@/components/service-page-layout"
 
 export const metadata: Metadata = {
-  title: "Commercial Conveyor Oven Cleaning | Dirty Dawgz Oven Cleaning LLC",
+  title: "Commercial Oven Cleaning | Dirty Dawgz Michigan",
   description:
-    "Professional commercial conveyor oven cleaning across Michigan. Learn why regular cleaning is critical, how often to schedule service, and our satisfaction guarantee.",
+    "Dirty Dawgz provides professional commercial oven cleaning for restaurants and pizza shops across Michigan. Deep cleaning for conveyor ovens and commercial kitchen equipment.",
 }
 
 export default function OvenCleaningPage() {

@@ -3,9 +3,9 @@ import { Wind } from "lucide-react"
 import { ServicePageLayout } from "@/components/service-page-layout"
 
 export const metadata: Metadata = {
-  title: "Hood Vent Cleaning | Dirty Dawgz Oven Cleaning LLC",
+  title: "Restaurant Hood Cleaning | Dirty Dawgz Michigan",
   description:
-    "Professional hood vent and exhaust cleaning services across Michigan. Learn about NFPA 96 compliance, recommended cleaning schedules, and our service guarantee.",
+    "Dirty Dawgz provides professional restaurant hood cleaning and kitchen exhaust system cleaning across Michigan. Reliable service for commercial kitchens and pizza shops.",
 }
 
 export default function HoodCleaningPage() {

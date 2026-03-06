@@ -3,9 +3,9 @@ import { Droplets } from "lucide-react"
 import { ServicePageLayout } from "@/components/service-page-layout"
 
 export const metadata: Metadata = {
-  title: "Grease Trap Cleaning | Dirty Dawgz Oven Cleaning LLC",
+  title: "Grease Trap Cleaning | Dirty Dawgz Michigan",
   description:
-    "Professional grease trap cleaning services across Michigan. Learn why regular maintenance is essential, how often to pump your trap, and our service guarantee.",
+    "Dirty Dawgz provides commercial grease trap cleaning for restaurants across Michigan. Professional service to help keep kitchen systems clean and operating efficiently.",
 }
 
 export default function GreaseTrapCleaningPage() {
