@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { CheckCircle, ImagePlus, Loader2, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -22,7 +22,7 @@ const serviceOptions = [
 ]
 
 const MAX_PHOTOS = 5
-const MAX_PHOTO_SIZE_MB = 3
+const MAX_PHOTO_SIZE_MB = 10
 const MAX_IMAGE_DIMENSION = 1200
 
 async function fileToJpegBase64(file: File): Promise<{ name: string; data: string; type: string }> {
@@ -81,7 +81,15 @@ export function QuoteForm() {
   const [phoneError, setPhoneError] = useState<string | null>(null)
   const [photoError, setPhotoError] = useState<string | null>(null)
   const [photoFiles, setPhotoFiles] = useState<File[]>([])
+  const [photoLimitMessage, setPhotoLimitMessage] = useState<string | null>(null)
   const photoInputRef = useRef<HTMLInputElement>(null)
+  const successRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (isSubmitted && successRef.current) {
+      successRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
+    }
+  }, [isSubmitted])
 
   function toggleService(serviceId: string) {
     setSelectedServices((prev) =>
@@ -125,7 +133,7 @@ export function QuoteForm() {
       const maxBytes = MAX_PHOTO_SIZE_MB * 1024 * 1024
       const valid = photoFiles.filter((f) => f.size <= maxBytes)
       if (valid.length < photoFiles.length) {
-        setPhotoError(`Only up to ${MAX_PHOTO_SIZE_MB}MB per photo. Some were skipped.`)
+        setPhotoError(`Photos over ${MAX_PHOTO_SIZE_MB}MB each were skipped. Try choosing smaller or fewer photos.`)
         setIsSubmitting(false)
         return
       }
@@ -159,7 +167,7 @@ export function QuoteForm() {
 
   if (isSubmitted) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
+      <div ref={successRef} className="flex flex-col items-center justify-center py-16 text-center">
         <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
           <CheckCircle className="h-10 w-10 text-primary" />
         </div>
@@ -674,7 +682,7 @@ export function QuoteForm() {
               Add Photos (optional)
             </Label>
             <p className="text-xs text-muted-foreground">
-              Up to {MAX_PHOTOS} photos, {MAX_PHOTO_SIZE_MB}MB each. JPEG or PNG (iPhone HEIC works best when uploaded from your phone). Help us quote accurately (e.g. oven condition, equipment).
+              Up to {MAX_PHOTOS} photos, {MAX_PHOTO_SIZE_MB}MB each (phone photos are fine). JPEG or PNG (iPhone HEIC works best when uploaded from your phone). Help us quote accurately (e.g. oven condition, equipment).
             </p>
             <input
               ref={photoInputRef}
@@ -685,9 +693,11 @@ export function QuoteForm() {
               className="sr-only"
               onChange={(e) => {
                 const list = e.target.files
+                const total = list?.length ?? 0
                 const files = list ? Array.from(list).slice(0, MAX_PHOTOS) : []
                 setPhotoFiles(files)
                 setPhotoError(null)
+                setPhotoLimitMessage(total > MAX_PHOTOS ? `Only the first ${MAX_PHOTOS} of ${total} photos are used.` : null)
                 e.target.value = ""
               }}
             />
@@ -708,6 +718,9 @@ export function QuoteForm() {
               <div className="flex flex-col gap-1 rounded-md border border-border bg-muted/30 p-2">
                 <p className="text-xs font-medium text-foreground">
                   {photoFiles.length} photo{photoFiles.length !== 1 ? "s" : ""} selected
+                  {photoLimitMessage && (
+                    <span className="block mt-1 font-normal text-muted-foreground">{photoLimitMessage}</span>
+                  )}
                 </p>
                 <ul className="list-inside list-disc text-xs text-muted-foreground">
                   {photoFiles.map((f, i) => (
@@ -729,6 +742,7 @@ export function QuoteForm() {
                   onClick={() => {
                     setPhotoFiles([])
                     setPhotoError(null)
+                    setPhotoLimitMessage(null)
                     if (photoInputRef.current) photoInputRef.current.value = ""
                   }}
                   className="mt-1 self-start text-xs text-primary underline hover:no-underline"

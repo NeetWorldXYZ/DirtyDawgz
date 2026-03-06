@@ -307,6 +307,13 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error("Quote API: Missing SMTP env (SMTP_HOST, SMTP_USER, SMTP_PASS). Set in Vercel → Settings → Environment Variables.")
+      return NextResponse.json(
+        { success: false, message: "Email is not configured. Please try again later." },
+        { status: 503 }
+      )
+    }
     const data = await request.json()
 
     const travelMiles = await getOneWayMiles(data)
@@ -317,26 +324,25 @@ export async function POST(request: Request) {
       process.env.QUOTE_FROM_EMAIL?.trim() ||
       `Dirty Dawgz Oven Cleaning LLC <${process.env.SMTP_USER || "info@dirtydawgzovencleaning.com"}>`
 
-    const sendPromise = transporter
-      .sendMail({
-        from: fromEmail,
-        to: "info@dirtydawgzovencleaning.com",
-        subject: `New Quote Request - ${data.business || data.name || "Website"}`,
-        text: emailBody,
-        attachments: [
-          {
-            filename: "quote-request.pdf",
-            content: pdfBuffer,
-          },
-        ],
-      })
-      .catch((error) => {
-        console.error("Failed to send quote email", error)
-      })
+    const sendPromise = transporter.sendMail({
+      from: fromEmail,
+      to: "info@dirtydawgzovencleaning.com",
+      subject: `New Quote Request - ${data.business || data.name || "Website"}`,
+      text: emailBody,
+      attachments: [
+        {
+          filename: "quote-request.pdf",
+          content: pdfBuffer,
+        },
+      ],
+    })
 
+    const timeoutMs = 8000
     await Promise.race([
       sendPromise,
-      new Promise((resolve) => setTimeout(resolve, 1000)),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("Email send timeout")), timeoutMs)
+      ),
     ])
 
     return NextResponse.json(
