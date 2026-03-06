@@ -11,9 +11,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dirtydawgzovenclean
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Dirty Dawgz Oven Cleaning | Commercial Oven, Hood & Grease Trap Cleaning Michigan',
+  title: 'Dirty Dawgz Oven Cleaning | Commercial Hood & Oven Cleaning Michigan',
   description:
-    "Dirty Dawgz provides professional commercial oven cleaning, hood cleaning, and grease trap cleaning for restaurants across Michigan. Reliable kitchen exhaust cleaning for pizza shops and commercial kitchens.",
+    "Dirty Dawgz provides professional commercial oven cleaning, hood cleaning, and grease trap cleaning for restaurants across Michigan. Trusted kitchen exhaust cleaning for pizza shops, restaurants, and commercial kitchens.",
   openGraph: {
     title: 'Dirty Dawgz Oven Cleaning',
     description: "Michigan's Premier Commercial Oven, Hood & Grease Trap Cleaning Service",
