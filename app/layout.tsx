@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Dirty Dawgz Oven Cleaning LLC",
     images: [
       {
-        url: '/images/logo.png',
+        url: '/images/dirty_dawgz_preview_1200x630.png',
         width: 1200,
         height: 630,
         alt: 'Dirty Dawgz Oven Cleaning LLC',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Dirty Dawgz Oven Cleaning LLC | Michigan's Premier Commercial Cleaning",
     description:
       "Michigan's premier commercial kitchen cleaning company. Professional conveyor oven cleaning, grease trap cleaning, and hood vent cleaning across Michigan.",
-    images: ['/images/logo.png'],
+    images: ['/images/dirty_dawgz_preview_1200x630.png'],
   },
   keywords: [
     'oven cleaning Michigan',
