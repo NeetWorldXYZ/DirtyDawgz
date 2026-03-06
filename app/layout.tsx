@@ -11,30 +11,28 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dirtydawgzovenclean
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Dirty Dawgz Oven Cleaning LLC | Michigan's Premier Commercial Cleaning",
+  title: 'Dirty Dawgz Oven Cleaning | Commercial Oven, Hood & Grease Trap Cleaning Michigan',
   description:
-    "Michigan's premier commercial kitchen cleaning company. Got a dirty oven? Call the Dirty Dawgz! Professional conveyor oven cleaning, grease trap cleaning, and hood vent cleaning across all of Michigan.",
+    "Dirty Dawgz provides professional commercial oven cleaning, hood cleaning, and grease trap cleaning for restaurants across Michigan. Reliable kitchen exhaust cleaning for pizza shops and commercial kitchens.",
   openGraph: {
-    title: "Dirty Dawgz Oven Cleaning LLC | Michigan's Premier Commercial Cleaning",
-    description:
-      "Michigan's premier commercial kitchen cleaning company. Professional conveyor oven cleaning, grease trap cleaning, and hood vent cleaning across Michigan.",
+    title: 'Dirty Dawgz Oven Cleaning',
+    description: "Michigan's Premier Commercial Oven, Hood & Grease Trap Cleaning Service",
     url: siteUrl,
-    siteName: "Dirty Dawgz Oven Cleaning LLC",
+    siteName: 'Dirty Dawgz Oven Cleaning',
     images: [
       {
         url: '/images/dirty_dawgz_preview_1200x630.png',
         width: 1200,
         height: 630,
-        alt: 'Dirty Dawgz Oven Cleaning LLC',
+        alt: 'Dirty Dawgz Oven Cleaning',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Dirty Dawgz Oven Cleaning LLC | Michigan's Premier Commercial Cleaning",
-    description:
-      "Michigan's premier commercial kitchen cleaning company. Professional conveyor oven cleaning, grease trap cleaning, and hood vent cleaning across Michigan.",
+    title: 'Dirty Dawgz Oven Cleaning',
+    description: "Michigan's Premier Commercial Oven, Hood & Grease Trap Cleaning Service",
     images: ['/images/dirty_dawgz_preview_1200x630.png'],
   },
   keywords: [
@@ -49,18 +47,12 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: [
-      {
-        url: '/dirty_dawgz_favicon_180x180.png',
-        type: 'image/png',
-        sizes: '180x180',
-      },
+      { url: '/images/favicon-48.png', type: 'image/png', sizes: '48x48' },
+      { url: '/images/favicon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/images/favicon-16.png', type: 'image/png', sizes: '16x16' },
     ],
     apple: [
-      {
-        url: '/dirty_dawgz_favicon_180x180.png',
-        type: 'image/png',
-        sizes: '180x180',
-      },
+      { url: '/dirty_dawgz_favicon_180x180.png', type: 'image/png', sizes: '180x180' },
     ],
   },
 }
@@ -71,6 +63,23 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Dirty Dawgz Oven Cleaning',
+  image: `${siteUrl}/images/logo.png`,
+  url: siteUrl,
+  telephone: '+1-269-248-1209',
+  areaServed: 'Michigan',
+  description:
+    'Commercial oven cleaning, hood cleaning, and grease trap cleaning for restaurants and commercial kitchens.',
+  serviceType: [
+    'Commercial Oven Cleaning',
+    'Kitchen Hood Cleaning',
+    'Grease Trap Cleaning',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -79,6 +88,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         {children}
         <Analytics />
       </body>
