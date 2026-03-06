@@ -20,11 +20,11 @@ export function SiteHeader() {
             height={72}
             className="rounded-full"
           />
-          <div className="hidden sm:block">
-            <p className="font-[family-name:var(--font-oswald)] text-lg font-bold uppercase leading-tight tracking-wide text-primary-foreground">
+          <div>
+            <p className="font-[family-name:var(--font-oswald)] text-sm font-bold uppercase leading-tight tracking-wide text-primary-foreground sm:text-lg">
               Dirty Dawgz
             </p>
-            <p className="font-[family-name:var(--font-oswald)] text-[10px] uppercase tracking-widest text-primary-foreground/70">
+            <p className="font-[family-name:var(--font-oswald)] text-[9px] uppercase tracking-widest text-primary-foreground/70 sm:text-[10px]">
               Oven Cleaning LLC
             </p>
           </div>
