@@ -68,6 +68,7 @@ Address: ${data.address || "N/A"}
 City: ${data.city || "N/A"}
 State: ${data.state || "N/A"}
 ZIP: ${data.zip || "N/A"}
+Number of locations: ${data.numberOfLocations || "1"}
 `
 
   if (data.ovenBrand || data.ovenModel || data.ovenCount || data.ovenLastCleaned || data.ovenNotes) {
@@ -194,6 +195,7 @@ async function generateQuotePdf(data: any, travelMiles: number | null): Promise<
     { label: "City", value: data.city },
     { label: "State", value: data.state },
     { label: "ZIP", value: data.zip },
+    { label: "Number of locations", value: data.numberOfLocations || "1" },
     {
       label: "Travel Distance (One-Way)",
       value: travelMiles != null ? `${travelMiles} miles` : "Unable to calculate",

@@ -82,6 +82,8 @@ export function QuoteForm() {
   const [photoError, setPhotoError] = useState<string | null>(null)
   const [photoFiles, setPhotoFiles] = useState<File[]>([])
   const [photoLimitMessage, setPhotoLimitMessage] = useState<string | null>(null)
+  const [multipleLocations, setMultipleLocations] = useState(false)
+  const [numberOfLocationsValue, setNumberOfLocationsValue] = useState("2")
   const photoInputRef = useRef<HTMLInputElement>(null)
   const successRef = useRef<HTMLDivElement>(null)
 
@@ -128,6 +130,8 @@ export function QuoteForm() {
     data.services = selectedServices.map(
       (id) => serviceOptions.find((s) => s.id === id)?.label || id
     )
+
+    data.numberOfLocations = multipleLocations ? numberOfLocationsValue : "1"
 
     if (photoFiles.length > 0) {
       const maxBytes = MAX_PHOTO_SIZE_MB * 1024 * 1024
@@ -190,6 +194,8 @@ export function QuoteForm() {
             setIsSubmitted(false)
             setSelectedServices([])
             setPhotoFiles([])
+            setMultipleLocations(false)
+            setNumberOfLocationsValue("2")
           }}
         >
           Submit Another Request
@@ -352,6 +358,39 @@ export function QuoteForm() {
                 className="border-border bg-card text-card-foreground"
               />
             </div>
+          </div>
+          <div className="flex flex-col gap-3 sm:col-span-2">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="multiple-locations"
+                checked={multipleLocations}
+                onCheckedChange={(checked) => setMultipleLocations(checked === true)}
+                className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+              />
+              <Label htmlFor="multiple-locations" className="text-sm font-medium text-foreground cursor-pointer">
+                I have multiple locations
+              </Label>
+            </div>
+            {multipleLocations && (
+              <div className="flex flex-col gap-2 max-w-xs">
+                <Label htmlFor="number-of-locations" className="text-sm font-medium text-foreground">
+                  Number of locations
+                </Label>
+                <Select name="numberOfLocations" value={numberOfLocationsValue} onValueChange={setNumberOfLocationsValue}>
+                  <SelectTrigger id="number-of-locations" className="border-border bg-card text-card-foreground">
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                      <SelectItem key={n} value={String(n)}>
+                        {n}
+                      </SelectItem>
+                    ))}
+                    <SelectItem value="10+">10+</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
           </div>
         </div>
       </div>
