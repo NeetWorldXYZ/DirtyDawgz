@@ -7,10 +7,36 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const oswald = Oswald({ subsets: ['latin'], variable: '--font-oswald' })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dirtydawgzovencleaning.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Dirty Dawgz Oven Cleaning LLC | Michigan's Premier Commercial Cleaning",
   description:
     "Michigan's premier commercial kitchen cleaning company. Got a dirty oven? Call the Dirty Dawgz! Professional conveyor oven cleaning, grease trap cleaning, and hood vent cleaning across all of Michigan.",
+  openGraph: {
+    title: "Dirty Dawgz Oven Cleaning LLC | Michigan's Premier Commercial Cleaning",
+    description:
+      "Michigan's premier commercial kitchen cleaning company. Professional conveyor oven cleaning, grease trap cleaning, and hood vent cleaning across Michigan.",
+    url: siteUrl,
+    siteName: "Dirty Dawgz Oven Cleaning LLC",
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Dirty Dawgz Oven Cleaning LLC',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Dirty Dawgz Oven Cleaning LLC | Michigan's Premier Commercial Cleaning",
+    description:
+      "Michigan's premier commercial kitchen cleaning company. Professional conveyor oven cleaning, grease trap cleaning, and hood vent cleaning across Michigan.",
+    images: ['/images/logo.png'],
+  },
   keywords: [
     'oven cleaning Michigan',
     'commercial oven cleaning',
