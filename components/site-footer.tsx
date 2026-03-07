@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail } from "lucide-react"
+import { Phone, Mail, Facebook } from "lucide-react"
 
 export function SiteFooter() {
   return (
@@ -91,6 +91,15 @@ export function SiteFooter() {
               >
                 <Mail className="h-4 w-4" />
                 <span className="break-all">info@dirtydawgzovencleaning.com</span>
+              </a>
+              <a
+                href="https://www.facebook.com/people/Dirty-Dawgz-Oven-Cleaning-LLC/61586346754471/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
+              >
+                <Facebook className="h-4 w-4" />
+                Follow us on Facebook
               </a>
             </div>
           </div>
