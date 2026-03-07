@@ -32,25 +32,25 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-8 md:flex">
           <Link
-            href="#services"
+            href="/#services"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Services
           </Link>
           <Link
-            href="#why-us"
+            href="/#why-us"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Why Us
           </Link>
           <Link
-            href="#service-area"
+            href="/#service-area"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Service Area
           </Link>
           <Link
-            href="#quote"
+            href="/#quote"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Get a Quote
@@ -63,7 +63,7 @@ export function SiteHeader() {
             <span>(269) 248-1209</span>
           </Link>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-            <Link href="#quote">Request a Quote</Link>
+            <Link href="/#quote">Request a Quote</Link>
           </Button>
         </nav>
 
@@ -80,28 +80,28 @@ export function SiteHeader() {
         <div className="border-t border-secondary-foreground/10 bg-secondary md:hidden">
           <nav className="flex flex-col gap-1 px-4 py-4">
             <Link
-              href="#services"
+              href="/#services"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Services
             </Link>
             <Link
-              href="#why-us"
+              href="/#why-us"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Why Us
             </Link>
             <Link
-              href="#service-area"
+              href="/#service-area"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Service Area
             </Link>
             <Link
-              href="#quote"
+              href="/#quote"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
@@ -115,7 +115,7 @@ export function SiteHeader() {
               <span>(269) 248-1209</span>
             </Link>
             <Button asChild className="mt-2 bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="#quote" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/#quote" onClick={() => setMobileMenuOpen(false)}>
                 Request a Quote
               </Link>
             </Button>
