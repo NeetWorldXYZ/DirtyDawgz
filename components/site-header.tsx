@@ -31,30 +31,30 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          <Link
+          <a
             href="/#services"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Services
-          </Link>
-          <Link
+          </a>
+          <a
             href="/#why-us"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Why Us
-          </Link>
-          <Link
+          </a>
+          <a
             href="/#service-area"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Service Area
-          </Link>
-          <Link
+          </a>
+          <a
             href="/#quote"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Get a Quote
-          </Link>
+          </a>
           <Link
             href="tel:2692481209"
             className="flex items-center gap-2 text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
@@ -63,7 +63,7 @@ export function SiteHeader() {
             <span>(269) 248-1209</span>
           </Link>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-            <Link href="/#quote">Request a Quote</Link>
+            <a href="/#quote">Request a Quote</a>
           </Button>
         </nav>
 
@@ -79,34 +79,34 @@ export function SiteHeader() {
       {mobileMenuOpen && (
         <div className="border-t border-secondary-foreground/10 bg-secondary md:hidden">
           <nav className="flex flex-col gap-1 px-4 py-4">
-            <Link
+            <a
               href="/#services"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Services
-            </Link>
-            <Link
+            </a>
+            <a
               href="/#why-us"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Why Us
-            </Link>
-            <Link
+            </a>
+            <a
               href="/#service-area"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Service Area
-            </Link>
-            <Link
+            </a>
+            <a
               href="/#quote"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Get a Quote
-            </Link>
+            </a>
             <Link
               href="tel:2692481209"
               className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
@@ -115,9 +115,9 @@ export function SiteHeader() {
               <span>(269) 248-1209</span>
             </Link>
             <Button asChild className="mt-2 bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="/#quote" onClick={() => setMobileMenuOpen(false)}>
+              <a href="/#quote" onClick={() => setMobileMenuOpen(false)}>
                 Request a Quote
-              </Link>
+              </a>
             </Button>
           </nav>
         </div>
