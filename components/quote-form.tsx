@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { isValidUsPhone } from "@/lib/validation"
 
 const serviceOptions = [
   { id: "conveyor-oven", label: "Commercial Conveyor Oven Cleaning" },
@@ -106,7 +107,7 @@ export function QuoteForm() {
     setIsSubmitting(true)
 
     const formData = new FormData(e.currentTarget)
-    const data: Record<string, string | string[]> = {}
+    const data: Record<string, string | string[] | { name: string; data: string; type: string }[]> = {}
 
     formData.forEach((value, key) => {
       if (data[key]) {
@@ -120,8 +121,7 @@ export function QuoteForm() {
       }
     })
 
-    const digitsOnly = String(data.phone || "").replace(/\D/g, "")
-    if (digitsOnly.length !== 10) {
+    if (!isValidUsPhone(String(data.phone || ""))) {
       setPhoneError("Please enter a valid 10-digit phone number.")
       setIsSubmitting(false)
       return
@@ -251,6 +251,7 @@ export function QuoteForm() {
               id="name"
               name="name"
               required
+              autoComplete="name"
               placeholder="John Smith"
               className="border-border bg-card text-card-foreground"
             />
@@ -263,6 +264,7 @@ export function QuoteForm() {
               id="business"
               name="business"
               required
+              autoComplete="organization"
               placeholder="Your Restaurant Name"
               className="border-border bg-card text-card-foreground"
             />
@@ -276,6 +278,8 @@ export function QuoteForm() {
               name="email"
               type="email"
               required
+              autoComplete="email"
+              inputMode="email"
               placeholder="john@restaurant.com"
               className="border-border bg-card text-card-foreground"
             />
@@ -289,6 +293,8 @@ export function QuoteForm() {
               name="phone"
               type="tel"
               required
+              autoComplete="tel"
+              inputMode="tel"
               placeholder="(555) 123-4567"
               className="border-border bg-card text-card-foreground"
               aria-invalid={!!phoneError}
@@ -317,6 +323,7 @@ export function QuoteForm() {
               id="address"
               name="address"
               required
+              autoComplete="street-address"
               placeholder="123 Main Street"
               className="border-border bg-card text-card-foreground"
             />
@@ -329,6 +336,7 @@ export function QuoteForm() {
               id="city"
               name="city"
               required
+              autoComplete="address-level2"
               placeholder="Kalamazoo"
               className="border-border bg-card text-card-foreground"
             />
@@ -342,6 +350,7 @@ export function QuoteForm() {
                 id="state"
                 name="state"
                 required
+                autoComplete="address-level1"
                 placeholder="MI"
                 className="border-border bg-card text-card-foreground"
               />
@@ -354,6 +363,8 @@ export function QuoteForm() {
                 id="zip"
                 name="zip"
                 required
+                autoComplete="postal-code"
+                inputMode="numeric"
                 placeholder="49001"
                 className="border-border bg-card text-card-foreground"
               />
@@ -397,7 +408,7 @@ export function QuoteForm() {
 
       {/* Conditional: Conveyor Oven Details */}
       {selectedServices.includes("conveyor-oven") && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 sm:p-6">
           <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
             Conveyor Oven Details
           </h3>
@@ -476,7 +487,7 @@ export function QuoteForm() {
 
       {/* Conditional: Grease Trap Details */}
       {selectedServices.includes("grease-trap") && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 sm:p-6">
           <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
             Grease Trap Details
           </h3>
@@ -566,7 +577,7 @@ export function QuoteForm() {
 
       {/* Conditional: Hood Vent Details */}
       {selectedServices.includes("hood-vent") && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+        <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 sm:p-6">
           <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
             Hood Vent Details
           </h3>
@@ -768,10 +779,10 @@ export function QuoteForm() {
                       <button
                         type="button"
                         onClick={() => setPhotoFiles((prev) => prev.filter((_, j) => j !== i))}
-                        className="shrink-0 rounded p-0.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+                        className="shrink-0 rounded p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
                         aria-label={`Remove ${f.name}`}
                       >
-                        <X className="h-3.5 w-3.5" />
+                        <X className="h-4 w-4" />
                       </button>
                     </li>
                   ))}
@@ -802,7 +813,7 @@ export function QuoteForm() {
           type="submit"
           size="lg"
           disabled={selectedServices.length === 0 || isSubmitting}
-          className="bg-primary px-8 text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+          className="h-12 w-full bg-primary px-8 text-primary-foreground hover:bg-primary/90 disabled:opacity-50 sm:h-10 sm:w-auto"
         >
           {isSubmitting ? (
             <>

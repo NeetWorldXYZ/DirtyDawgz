@@ -34,7 +34,7 @@ export function ServicePageLayout({
       <SiteHeader />
       <main>
         {/* Hero */}
-        <section className="bg-secondary py-16 lg:py-24">
+        <section className="bg-secondary py-12 sm:py-16 lg:py-24">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">
             <Link
               href="/#services"
@@ -54,15 +54,15 @@ export function ServicePageLayout({
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-secondary-foreground/70">
                 {heroDescription}
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <div className="mt-8 flex w-full max-w-md flex-col gap-4 sm:w-auto sm:max-w-none sm:flex-row">
+                <Button asChild size="lg" className="h-12 w-full bg-primary text-primary-foreground hover:bg-primary/90 sm:h-10 sm:w-auto">
                   <Link href="/#quote">Request a Free Quote</Link>
                 </Button>
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                  className="h-12 w-full border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground sm:h-10 sm:w-auto"
                 >
                   <Link href="tel:2692481209">
                     <Phone className="mr-2 h-4 w-4" />
@@ -75,9 +75,9 @@ export function ServicePageLayout({
         </section>
 
         {/* Why It's Important */}
-        <section className="bg-background py-20 lg:py-28">
+        <section className="bg-background py-14 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">
-            <div className="mx-auto mb-14 max-w-2xl text-center">
+            <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
               <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
                 Why It Matters
               </p>
@@ -85,11 +85,11 @@ export function ServicePageLayout({
                 {whyTitle}
               </h2>
             </div>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {whyPoints.map((point) => (
                 <div
                   key={point.heading}
-                  className="rounded-xl border border-border bg-card p-8 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+                  className="rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-8"
                 >
                   <h3 className="font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-card-foreground">
                     {point.heading}
@@ -104,9 +104,9 @@ export function ServicePageLayout({
         </section>
 
         {/* How Often */}
-        <section className="bg-muted py-20 lg:py-28">
+        <section className="bg-muted py-14 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">
-            <div className="mx-auto mb-14 max-w-2xl text-center">
+            <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
               <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
                 Recommended Schedule
               </p>
@@ -141,7 +141,7 @@ export function ServicePageLayout({
         </section>
 
         {/* Our Guarantee */}
-        <section className="bg-secondary py-20 lg:py-28">
+        <section className="bg-secondary py-14 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
@@ -154,7 +154,7 @@ export function ServicePageLayout({
                 {guarantee.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 rounded-lg border border-secondary-foreground/10 bg-secondary-foreground/5 px-6 py-4"
+                    className="flex items-start gap-3 rounded-lg border border-secondary-foreground/10 bg-secondary-foreground/5 px-4 py-4 sm:px-6"
                   >
                     <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                     <span className="text-sm leading-relaxed text-secondary-foreground/80">
@@ -163,15 +163,15 @@ export function ServicePageLayout({
                   </li>
                 ))}
               </ul>
-              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <div className="mx-auto mt-10 flex w-full max-w-md flex-col items-stretch gap-4 sm:w-auto sm:max-w-none sm:flex-row sm:justify-center">
+                <Button asChild size="lg" className="h-12 w-full bg-primary text-primary-foreground hover:bg-primary/90 sm:h-10 sm:w-auto">
                   <Link href="/#quote">Get Your Free Quote</Link>
                 </Button>
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                  className="h-12 w-full border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground sm:h-10 sm:w-auto"
                 >
                   <Link href="tel:2692481209">
                     <Phone className="mr-2 h-4 w-4" />

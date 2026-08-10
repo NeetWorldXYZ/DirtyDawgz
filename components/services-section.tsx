@@ -49,9 +49,9 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="bg-background py-20 lg:py-28">
+    <section id="services" className="bg-background py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-16">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
             What We Do
           </p>
@@ -63,11 +63,11 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {services.map((service) => (
             <div
               key={service.title}
-              className="group flex flex-col rounded-xl border border-border bg-card p-8 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+              className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-8"
             >
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10">
                 <service.icon className="h-7 w-7 text-primary" />

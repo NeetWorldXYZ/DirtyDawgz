@@ -18,7 +18,7 @@ export function SiteHeader() {
             alt="Dirty Dawgz Oven Cleaning LLC logo"
             width={72}
             height={72}
-            className="rounded-full"
+            className="h-12 w-12 rounded-full sm:h-[72px] sm:w-[72px]"
           />
           <div>
             <p className="font-[family-name:var(--font-oswald)] text-sm font-bold uppercase leading-tight tracking-wide text-primary-foreground sm:text-lg">
@@ -31,30 +31,30 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          <a
+          <Link
             href="/#services"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Services
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#why-us"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Why Us
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#service-area"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Service Area
-          </a>
-          <a
+          </Link>
+          <Link
             href="/#quote"
             className="text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
           >
             Get a Quote
-          </a>
+          </Link>
           <Link
             href="tel:2692481209"
             className="flex items-center gap-2 text-sm font-medium text-secondary-foreground/80 transition-colors hover:text-primary"
@@ -63,14 +63,15 @@ export function SiteHeader() {
             <span>(269) 248-1209</span>
           </Link>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-            <a href="/#quote">Request a Quote</a>
+            <Link href="/#quote">Request a Quote</Link>
           </Button>
         </nav>
 
         <button
-          className="md:hidden text-secondary-foreground"
+          className="md:hidden -mr-2 rounded-lg p-2.5 text-secondary-foreground transition-colors hover:bg-secondary-foreground/10"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -79,34 +80,34 @@ export function SiteHeader() {
       {mobileMenuOpen && (
         <div className="border-t border-secondary-foreground/10 bg-secondary md:hidden">
           <nav className="flex flex-col gap-1 px-4 py-4">
-            <a
+            <Link
               href="/#services"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Services
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#why-us"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Why Us
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#service-area"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Service Area
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#quote"
               onClick={() => setMobileMenuOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
             >
               Get a Quote
-            </a>
+            </Link>
             <Link
               href="tel:2692481209"
               className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-secondary-foreground/5 hover:text-primary"
@@ -115,9 +116,9 @@ export function SiteHeader() {
               <span>(269) 248-1209</span>
             </Link>
             <Button asChild className="mt-2 bg-primary text-primary-foreground hover:bg-primary/90">
-              <a href="/#quote" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/#quote" onClick={() => setMobileMenuOpen(false)}>
                 Request a Quote
-              </a>
+              </Link>
             </Button>
           </nav>
         </div>

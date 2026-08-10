@@ -29,9 +29,9 @@ const reasons = [
 
 export function WhyUsSection() {
   return (
-    <section id="why-us" className="bg-secondary py-20 text-secondary-foreground lg:py-28">
+    <section id="why-us" className="bg-secondary py-14 text-secondary-foreground sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-16">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
             Why Choose Us
           </p>
@@ -43,7 +43,7 @@ export function WhyUsSection() {
           </p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
           {reasons.map((reason) => (
             <div
               key={reason.title}
