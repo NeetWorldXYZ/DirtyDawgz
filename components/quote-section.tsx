@@ -3,9 +3,9 @@ import { QuoteForm } from "@/components/quote-form"
 
 export function QuoteSection() {
   return (
-    <section id="quote" className="bg-background py-20 lg:py-28">
+    <section id="quote" className="bg-background py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+        <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-12">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
             Get Started
           </p>
@@ -18,9 +18,9 @@ export function QuoteSection() {
           </p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3 lg:gap-12">
           <div className="lg:col-span-2">
-            <div className="rounded-xl border border-border bg-card p-6 shadow-sm lg:p-8">
+            <div className="rounded-xl border border-border bg-card p-4 shadow-sm sm:p-6 lg:p-8">
               <QuoteForm />
             </div>
           </div>

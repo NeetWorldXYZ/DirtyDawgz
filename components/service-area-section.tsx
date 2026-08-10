@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 export function ServiceAreaSection() {
   return (
-    <section id="service-area" className="bg-muted py-20 lg:py-28">
+    <section id="service-area" className="bg-muted py-14 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
@@ -19,13 +19,13 @@ export function ServiceAreaSection() {
         </div>
 
         <div className="mx-auto max-w-4xl">
-          <div className="rounded-xl border border-border bg-card p-8 lg:p-10">
+          <div className="rounded-xl border border-border bg-card p-6 sm:p-8 lg:p-10">
             <div className="flex flex-col items-center gap-6 text-center">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                 <MapPin className="h-6 w-6 text-primary" />
               </div>
               <p className="text-lg leading-relaxed text-card-foreground/90">
-                We serve every county and community across the entire state of Michigan — from the UP to the Indiana border. Wherever your commercial kitchen is located, we've got you covered.
+                {"We serve every county and community across the entire state of Michigan — from the UP to the Indiana border. Wherever your commercial kitchen is located, we've got you covered."}
               </p>
             </div>
 
@@ -33,7 +33,7 @@ export function ServiceAreaSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary px-8 text-lg font-semibold text-primary-foreground hover:bg-primary/90"
+                className="h-12 w-full bg-primary px-8 text-lg font-semibold text-primary-foreground hover:bg-primary/90 sm:w-auto"
               >
                 <Link href="/#quote">Get a Free Quote for Your Area</Link>
               </Button>

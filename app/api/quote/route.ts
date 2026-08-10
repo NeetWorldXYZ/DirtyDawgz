@@ -8,6 +8,39 @@ export const runtime = "nodejs"
 
 const OFFICE_COORDS = { lat: 42.28, lon: -84.93 }
 
+interface QuoteData {
+  name?: string
+  business?: string
+  email?: string
+  phone?: string
+  address?: string
+  city?: string
+  state?: string
+  zip?: string
+  numberOfLocations?: string
+  services?: string | string[]
+  ovenBrand?: string
+  ovenModel?: string
+  ovenCount?: string
+  ovenLastCleaned?: string
+  ovenNotes?: string
+  trapSize?: string
+  trapLocation?: string
+  trapLastCleaned?: string
+  trapIssues?: string
+  trapNotes?: string
+  hoodType?: string
+  hoodLength?: string
+  hoodLastCleaned?: string
+  hoodFilters?: string
+  hoodRoofAccess?: string
+  hoodNotes?: string
+  preferredDate?: string
+  preferredTime?: string
+  additionalNotes?: string
+  photos?: { name?: string; data?: string; type?: string }[]
+}
+
 function formatPhone(phone: string | undefined): string {
   if (!phone) return "N/A"
   const digits = phone.replace(/\D/g, "")
@@ -26,7 +59,7 @@ function haversineMiles(a: { lat: number; lon: number }, b: { lat: number; lon: 
   return R * c
 }
 
-async function getOneWayMiles(data: any): Promise<number | null> {
+async function getOneWayMiles(data: QuoteData): Promise<number | null> {
   if (!data.address || !data.city || !data.state) return null
   const full = `${data.address}, ${data.city}, ${data.state} ${data.zip || ""}`.trim()
   try {
@@ -46,7 +79,7 @@ async function getOneWayMiles(data: any): Promise<number | null> {
   }
 }
 
-function buildTextEmailBody(data: any) {
+function buildTextEmailBody(data: QuoteData) {
   const services = Array.isArray(data.services) ? data.services.join(", ") : data.services
 
   let emailBody = `
@@ -122,7 +155,7 @@ ${data.additionalNotes || "None"}
   return emailBody
 }
 
-async function generateQuotePdf(data: any, travelMiles: number | null): Promise<Buffer> {
+async function generateQuotePdf(data: QuoteData, travelMiles: number | null): Promise<Buffer> {
   const pdfDoc = await PDFDocument.create()
   const page = pdfDoc.addPage()
   const { height } = page.getSize()
@@ -316,7 +349,7 @@ export async function POST(request: Request) {
         { status: 503 }
       )
     }
-    const data = await request.json()
+    const data = (await request.json()) as QuoteData
 
     const travelMiles = await getOneWayMiles(data)
     const emailBody = buildTextEmailBody(data)
