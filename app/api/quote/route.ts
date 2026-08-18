@@ -3,6 +3,7 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib"
 import nodemailer from "nodemailer"
 import fs from "fs/promises"
 import path from "path"
+import { sendLeadToCrm } from "@/lib/crm"
 
 export const runtime = "nodejs"
 
@@ -308,15 +309,33 @@ const transporter = nodemailer.createTransport({
 })
 
 export async function POST(request: Request) {
+  // Read the body first. The enquiry is the valuable thing here, and it used
+  // to be discarded unread whenever SMTP happened to be misconfigured.
+  let data: any
+  try {
+    data = await request.json()
+  } catch {
+    return NextResponse.json({ success: false, message: "Bad request." }, { status: 400 })
+  }
+
+  // Into the CRM straight away, in parallel with the email below. This never
+  // throws, so it cannot affect what the customer sees.
+  const referer = request.headers.get("referer")
+  const crmPromise = sendLeadToCrm(data, { page: referer, referrer: referer })
+
   try {
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
       console.error("Quote API: Missing SMTP env (SMTP_HOST, SMTP_USER, SMTP_PASS). Set in Vercel → Settings → Environment Variables.")
-      return NextResponse.json(
-        { success: false, message: "Email is not configured. Please try again later." },
-        { status: 503 }
-      )
+      // The email can't go, but if the CRM took the lead the enquiry did
+      // reach the business — so don't tell the customer it failed.
+      const crm = await crmPromise
+      return crm.ok
+        ? NextResponse.json({ success: true, message: "Quote request received" }, { status: 200 })
+        : NextResponse.json(
+            { success: false, message: "Email is not configured. Please try again later." },
+            { status: 503 }
+          )
     }
-    const data = await request.json()
 
     const travelMiles = await getOneWayMiles(data)
     const emailBody = buildTextEmailBody(data)
@@ -356,6 +375,15 @@ export async function POST(request: Request) {
     )
   } catch (error) {
     console.error("Failed to process quote request", error)
+    // Same reasoning as above: if the lead is in the CRM, the enquiry landed.
+    // Telling the customer to call instead would cost a job we already have.
+    const crm = await crmPromise
+    if (crm.ok) {
+      return NextResponse.json(
+        { success: true, message: "Quote request received" },
+        { status: 200 }
+      )
+    }
     return NextResponse.json(
       { success: false, message: "Failed to process quote request" },
       { status: 500 }
