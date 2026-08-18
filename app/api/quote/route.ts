@@ -7,6 +7,12 @@ import { sendLeadToCrm } from "@/lib/crm"
 
 export const runtime = "nodejs"
 
+// Generating the PDF and handing it to SMTP is slow, and this route now also
+// calls the CRM. Without an explicit ceiling the platform default can kill the
+// invocation part-way — which looks exactly like "the lead arrived but the
+// email never did", because the CRM call starts first and finishes first.
+export const maxDuration = 60
+
 const OFFICE_COORDS = { lat: 42.28, lon: -84.93 }
 
 function formatPhone(phone: string | undefined): string {
@@ -358,7 +364,10 @@ export async function POST(request: Request) {
       ],
     })
 
-    const timeoutMs = 8000
+    // 8s was tight for SMTP carrying a PDF attachment; with maxDuration raised
+    // there is room to let a slow-but-working send finish rather than
+    // abandoning it and reporting a failure that never really happened.
+    const timeoutMs = 25000
     await Promise.race([
       sendPromise,
       new Promise<never>((_, reject) =>
@@ -374,18 +383,30 @@ export async function POST(request: Request) {
       { status: 200 }
     )
   } catch (error) {
-    console.error("Failed to process quote request", error)
-    // Same reasoning as above: if the lead is in the CRM, the enquiry landed.
-    // Telling the customer to call instead would cost a job we already have.
+    // Loud and greppable. An earlier version of this route reported success
+    // whenever the CRM had the lead, which is right for the customer but made
+    // a broken office email invisible — the only way to notice was spotting
+    // that the PDF never arrived.
+    console.error("QUOTE EMAIL FAILED — the office did not get the PDF:", error)
+
     const crm = await crmPromise
     if (crm.ok) {
+      // The enquiry did reach the business, so don't send the customer away.
+      // `emailed: false` is the flag to look for when the PDF goes missing.
       return NextResponse.json(
-        { success: true, message: "Quote request received" },
+        {
+          success: true,
+          emailed: false,
+          crm: true,
+          message: "Quote request received",
+        },
         { status: 200 }
       )
     }
+
+    console.error("QUOTE LOST — neither email nor CRM accepted it:", crm.reason)
     return NextResponse.json(
-      { success: false, message: "Failed to process quote request" },
+      { success: false, emailed: false, crm: false, message: "Failed to process quote request" },
       { status: 500 }
     )
   }
