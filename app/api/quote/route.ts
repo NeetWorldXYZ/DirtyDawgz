@@ -4,6 +4,7 @@ import nodemailer from "nodemailer"
 import fs from "fs/promises"
 import path from "path"
 import { sendLeadToCrm } from "@/lib/crm"
+import { sendViaResend } from "@/lib/mailer"
 
 export const runtime = "nodejs"
 
@@ -351,33 +352,51 @@ export async function POST(request: Request) {
       process.env.QUOTE_FROM_EMAIL?.trim() ||
       `Dirty Dawgz Oven Cleaning LLC <${process.env.SMTP_USER || "info@dirtydawgzovencleaning.com"}>`
 
-    const sendPromise = transporter.sendMail({
-      from: fromEmail,
-      to: "info@dirtydawgzovencleaning.com",
-      subject: `New Quote Request - ${data.business || data.name || "Website"}`,
+    const subject = `New Quote Request - ${data.business || data.name || "Website"}`
+    const OFFICE = "info@dirtydawgzovencleaning.com"
+
+    // Resend first. SMTP was accepting the message and returning success while
+    // nothing arrived — a delivery failure no amount of code could see. Resend
+    // is already proven on this domain, and it reports rejections instead of
+    // swallowing them.
+    let outcome = await sendViaResend({
+      to: OFFICE,
+      subject,
       text: emailBody,
-      attachments: [
-        {
-          filename: "quote-request.pdf",
-          content: pdfBuffer,
-        },
-      ],
+      pdf: pdfBuffer,
+      filename: "quote-request.pdf",
     })
 
-    // 8s was tight for SMTP carrying a PDF attachment; with maxDuration raised
-    // there is room to let a slow-but-working send finish rather than
-    // abandoning it and reporting a failure that never really happened.
-    const timeoutMs = 25000
-    await Promise.race([
-      sendPromise,
-      new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error("Email send timeout")), timeoutMs)
-      ),
-    ])
+    if (!outcome.ok) {
+      console.error(`Resend path unavailable (${outcome.reason}) — trying SMTP.`)
 
+      const sendPromise = transporter.sendMail({
+        from: fromEmail,
+        to: OFFICE,
+        subject,
+        text: emailBody,
+        attachments: [{ filename: "quote-request.pdf", content: pdfBuffer }],
+      })
+
+      // 8s was tight for SMTP carrying a PDF attachment; with maxDuration
+      // raised there is room to let a slow-but-working send finish rather than
+      // abandoning it and reporting a failure that never really happened.
+      const timeoutMs = 25000
+      await Promise.race([
+        sendPromise,
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error("Email send timeout")), timeoutMs)
+        ),
+      ])
+      outcome = { ok: true, via: "smtp" }
+    }
+
+    console.log(`Quote email sent via ${outcome.via}`)
     return NextResponse.json(
       {
         success: true,
+        emailed: true,
+        via: outcome.via,
         message: "Quote request received and emailed successfully",
       },
       { status: 200 }
