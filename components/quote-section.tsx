@@ -20,13 +20,13 @@ export function QuoteSection() {
 
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <div className="rounded-xl border border-border bg-card p-6 shadow-sm lg:p-8">
+            <div className="border border-border bg-card p-6 shadow-sm lg:p-8">
               <QuoteForm />
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
-            <div className="rounded-xl border border-border bg-card p-6">
+            <div className="border border-border bg-card p-6">
               <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-card-foreground">
                 Contact Us Directly
               </h3>
@@ -58,7 +58,7 @@ export function QuoteSection() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-border bg-secondary p-6 text-secondary-foreground">
+            <div className="border border-border bg-secondary p-6 text-secondary-foreground">
               <h3 className="mb-3 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-primary-foreground">
                 Why Request a Quote?
               </h3>

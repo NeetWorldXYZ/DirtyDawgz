@@ -57,6 +57,12 @@ function buildDetails(data: any): string {
     ["Notes", data.hoodNotes],
   ]);
 
+  section("Other service requested", [["Details", data.otherDetails]]);
+
+  section("Recurring service plan", [
+    ["Interested", data.servicePlanInterest === "Yes" ? "Yes" : ""],
+  ]);
+
   section("Scheduling preference", [
     ["Preferred date", data.preferredDate],
     ["Preferred time", data.preferredTime],

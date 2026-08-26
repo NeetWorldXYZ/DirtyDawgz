@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { CheckCircle, ImagePlus, Loader2, X } from "lucide-react"
+import { CheckCircle, Check, ImagePlus, Loader2, X, Flame, Wind, Droplets, Wrench, Gauge } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -16,10 +16,53 @@ import {
 } from "@/components/ui/select"
 
 const serviceOptions = [
-  { id: "conveyor-oven", label: "Commercial Conveyor Oven Cleaning" },
-  { id: "grease-trap", label: "Grease Trap Cleaning" },
-  { id: "hood-vent", label: "Hood Vent Cleaning" },
+  {
+    id: "conveyor-oven",
+    label: "Commercial Conveyor Oven Cleaning",
+    short: "Oven Cleaning",
+    detail: "Conveyor, pizza & deck ovens",
+    icon: Flame,
+  },
+  {
+    id: "hood-vent",
+    label: "Hood Vent Cleaning",
+    short: "Hood & Exhaust",
+    detail: "Hoods, ducts & rooftop fans",
+    icon: Wind,
+  },
+  {
+    id: "grease-trap",
+    label: "Grease Trap Cleaning",
+    short: "Grease Trap",
+    detail: "Pump-outs & scraping",
+    icon: Droplets,
+  },
+  {
+    id: "other",
+    label: "Other",
+    short: "Something Else",
+    detail: "Tell us exactly what you need",
+    icon: Wrench,
+  },
 ]
+
+/** Shared field styling — squared-off, red focus, matches the industrial theme. */
+const fieldCls =
+  "rounded-none border-border bg-card text-card-foreground focus-visible:border-primary focus-visible:ring-primary/30"
+
+function SectionTitle({ step, children }: { step: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-5 flex items-baseline gap-3">
+      <span className="font-[family-name:var(--font-oswald)] text-2xl font-bold text-primary/40">
+        {step}
+      </span>
+      <h3 className="font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-wide text-foreground">
+        {children}
+      </h3>
+      <span className="h-px flex-1 self-center bg-border" />
+    </div>
+  )
+}
 
 const MAX_PHOTOS = 5
 const MAX_PHOTO_SIZE_MB = 10
@@ -84,6 +127,7 @@ export function QuoteForm() {
   const [photoLimitMessage, setPhotoLimitMessage] = useState<string | null>(null)
   const [multipleLocations, setMultipleLocations] = useState(false)
   const [numberOfLocationsValue, setNumberOfLocationsValue] = useState("2")
+  const [planInterest, setPlanInterest] = useState(false)
   const photoInputRef = useRef<HTMLInputElement>(null)
   const successRef = useRef<HTMLDivElement>(null)
 
@@ -132,6 +176,7 @@ export function QuoteForm() {
     )
 
     data.numberOfLocations = multipleLocations ? numberOfLocationsValue : "1"
+    data.servicePlanInterest = planInterest ? "Yes" : "No"
 
     if (photoFiles.length > 0) {
       const maxBytes = MAX_PHOTO_SIZE_MB * 1024 * 1024
@@ -196,6 +241,7 @@ export function QuoteForm() {
             setPhotoFiles([])
             setMultipleLocations(false)
             setNumberOfLocationsValue("2")
+            setPlanInterest(false)
           }}
         >
           Submit Another Request
@@ -208,40 +254,100 @@ export function QuoteForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-8">
       {/* Services Selection */}
       <div>
-        <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
-          Select Services Needed
-        </h3>
-        <div className="flex flex-col gap-3">
-          {serviceOptions.map((service) => (
-            <label
-              key={service.id}
-              className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-all ${
-                selectedServices.includes(service.id)
-                  ? "border-primary bg-primary/5"
-                  : "border-border bg-card hover:border-primary/30"
-              }`}
-            >
-              <Checkbox
-                checked={selectedServices.includes(service.id)}
-                onCheckedChange={() => toggleService(service.id)}
-                className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-              />
-              <span className="text-sm font-medium text-card-foreground">{service.label}</span>
-            </label>
-          ))}
+        <SectionTitle step="01">What Needs Cleaning?</SectionTitle>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {serviceOptions.map((service) => {
+            const selected = selectedServices.includes(service.id)
+            return (
+              <button
+                key={service.id}
+                type="button"
+                role="checkbox"
+                aria-checked={selected}
+                onClick={() => toggleService(service.id)}
+                className={`group relative flex items-center gap-4 border p-5 text-left transition-all duration-200 ${
+                  selected
+                    ? "border-primary bg-primary/5 shadow-sm shadow-primary/10"
+                    : "border-border bg-card hover:border-primary/40 hover:bg-primary/[0.02]"
+                }`}
+              >
+                <div
+                  className={`flex h-12 w-12 flex-shrink-0 items-center justify-center border transition-colors ${
+                    selected ? "border-primary bg-primary text-primary-foreground" : "border-primary/25 bg-primary/10 text-primary"
+                  }`}
+                >
+                  <service.icon className="h-6 w-6" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-[family-name:var(--font-oswald)] text-base font-bold uppercase tracking-tight text-card-foreground">
+                    {service.short}
+                  </p>
+                  <p className="truncate text-xs text-muted-foreground">{service.detail}</p>
+                </div>
+                <div
+                  className={`absolute right-3 top-3 flex h-5 w-5 items-center justify-center border transition-all ${
+                    selected ? "border-primary bg-primary" : "border-border bg-card"
+                  }`}
+                  aria-hidden
+                >
+                  {selected && <Check className="h-3.5 w-3.5 text-primary-foreground" />}
+                </div>
+              </button>
+            )
+          })}
         </div>
         {selectedServices.length === 0 && (
-          <p className="mt-2 text-sm text-muted-foreground">
-            Please select at least one service to continue.
+          <p className="mt-3 text-sm text-muted-foreground">
+            Select at least one service to continue.
           </p>
         )}
+
+        {/* Recurring service plan interest */}
+        <button
+          type="button"
+          role="checkbox"
+          aria-checked={planInterest}
+          onClick={() => setPlanInterest((v) => !v)}
+          className={`mt-4 flex w-full items-center gap-4 border p-4 text-left transition-all duration-200 ${
+            planInterest
+              ? "border-primary bg-[#161616] text-white"
+              : "border-border bg-card hover:border-primary/40"
+          }`}
+        >
+          <div
+            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center border ${
+              planInterest ? "border-primary bg-primary text-primary-foreground" : "border-primary/25 bg-primary/10 text-primary"
+            }`}
+          >
+            <Gauge className="h-5 w-5" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p
+              className={`font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-tight ${
+                planInterest ? "text-white" : "text-card-foreground"
+              }`}
+            >
+              I&apos;m interested in a recurring service plan
+            </p>
+            <p className={`text-xs ${planInterest ? "text-white/60" : "text-muted-foreground"}`}>
+              We track your cleaning schedule and contact you when equipment is due — you never
+              have to remember a date.
+            </p>
+          </div>
+          <div
+            className={`flex h-5 w-5 flex-shrink-0 items-center justify-center border ${
+              planInterest ? "border-primary bg-primary" : "border-border bg-card"
+            }`}
+            aria-hidden
+          >
+            {planInterest && <Check className="h-3.5 w-3.5 text-primary-foreground" />}
+          </div>
+        </button>
       </div>
 
       {/* Contact Information */}
       <div>
-        <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
-          Contact Information
-        </h3>
+        <SectionTitle step="02">Contact Information</SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-2">
             <Label htmlFor="name" className="text-sm font-medium text-foreground">
@@ -252,7 +358,7 @@ export function QuoteForm() {
               name="name"
               required
               placeholder="John Smith"
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -264,7 +370,7 @@ export function QuoteForm() {
               name="business"
               required
               placeholder="Your Restaurant Name"
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -277,7 +383,7 @@ export function QuoteForm() {
               type="email"
               required
               placeholder="john@restaurant.com"
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -290,7 +396,7 @@ export function QuoteForm() {
               type="tel"
               required
               placeholder="(555) 123-4567"
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
               aria-invalid={!!phoneError}
               onChange={() => setPhoneError(null)}
             />
@@ -305,9 +411,7 @@ export function QuoteForm() {
 
       {/* Location */}
       <div>
-        <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
-          Service Location
-        </h3>
+        <SectionTitle step="03">Service Location</SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-2 sm:col-span-2">
             <Label htmlFor="address" className="text-sm font-medium text-foreground">
@@ -318,7 +422,7 @@ export function QuoteForm() {
               name="address"
               required
               placeholder="123 Main Street"
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -330,7 +434,7 @@ export function QuoteForm() {
               name="city"
               required
               placeholder="Kalamazoo"
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -343,7 +447,7 @@ export function QuoteForm() {
                 name="state"
                 required
                 placeholder="MI"
-                className="border-border bg-card text-card-foreground"
+                className={fieldCls}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -355,7 +459,7 @@ export function QuoteForm() {
                 name="zip"
                 required
                 placeholder="49001"
-                className="border-border bg-card text-card-foreground"
+                className={fieldCls}
               />
             </div>
           </div>
@@ -377,7 +481,7 @@ export function QuoteForm() {
                   Number of locations
                 </Label>
                 <Select name="numberOfLocations" value={numberOfLocationsValue} onValueChange={setNumberOfLocationsValue}>
-                  <SelectTrigger id="number-of-locations" className="border-border bg-card text-card-foreground">
+                  <SelectTrigger id="number-of-locations" className={fieldCls}>
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
@@ -397,7 +501,7 @@ export function QuoteForm() {
 
       {/* Conditional: Conveyor Oven Details */}
       {selectedServices.includes("conveyor-oven") && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+        <div className="border-l-4 border-primary bg-primary/5 p-6">
           <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
             Conveyor Oven Details
           </h3>
@@ -410,7 +514,7 @@ export function QuoteForm() {
                 id="oven-brand"
                 name="ovenBrand"
                 placeholder="e.g., Lincoln, Middleby Marshall"
-                className="border-border bg-card text-card-foreground"
+                className={fieldCls}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -421,7 +525,7 @@ export function QuoteForm() {
                 id="oven-model"
                 name="ovenModel"
                 placeholder="e.g., 1132-000-A"
-                className="border-border bg-card text-card-foreground"
+                className={fieldCls}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -429,7 +533,7 @@ export function QuoteForm() {
                 Number of Decks
               </Label>
               <Select name="ovenCount">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select quantity" />
                 </SelectTrigger>
                 <SelectContent>
@@ -446,7 +550,7 @@ export function QuoteForm() {
                 Last Cleaned
               </Label>
               <Select name="ovenLastCleaned">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select timeframe" />
                 </SelectTrigger>
                 <SelectContent>
@@ -466,7 +570,7 @@ export function QuoteForm() {
                 id="oven-notes"
                 name="ovenNotes"
                 placeholder="Any specific issues or concerns with your oven(s)?"
-                className="border-border bg-card text-card-foreground"
+                className={fieldCls}
                 rows={3}
               />
             </div>
@@ -476,7 +580,7 @@ export function QuoteForm() {
 
       {/* Conditional: Grease Trap Details */}
       {selectedServices.includes("grease-trap") && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+        <div className="border-l-4 border-primary bg-primary/5 p-6">
           <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
             Grease Trap Details
           </h3>
@@ -486,7 +590,7 @@ export function QuoteForm() {
                 Grease Trap Size (Gallons)
               </Label>
               <Select name="trapSize">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select size" />
                 </SelectTrigger>
                 <SelectContent>
@@ -504,7 +608,7 @@ export function QuoteForm() {
                 Trap Location
               </Label>
               <Select name="trapLocation">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select location" />
                 </SelectTrigger>
                 <SelectContent>
@@ -519,7 +623,7 @@ export function QuoteForm() {
                 Last Cleaned
               </Label>
               <Select name="trapLastCleaned">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select timeframe" />
                 </SelectTrigger>
                 <SelectContent>
@@ -536,7 +640,7 @@ export function QuoteForm() {
                 Current Issues
               </Label>
               <Select name="trapIssues">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Any current issues?" />
                 </SelectTrigger>
                 <SelectContent>
@@ -556,7 +660,7 @@ export function QuoteForm() {
                 id="trap-notes"
                 name="trapNotes"
                 placeholder="Any specific concerns about your grease trap?"
-                className="border-border bg-card text-card-foreground"
+                className={fieldCls}
                 rows={3}
               />
             </div>
@@ -566,7 +670,7 @@ export function QuoteForm() {
 
       {/* Conditional: Hood Vent Details */}
       {selectedServices.includes("hood-vent") && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+        <div className="border-l-4 border-primary bg-primary/5 p-6">
           <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
             Hood Vent Details
           </h3>
@@ -576,7 +680,7 @@ export function QuoteForm() {
                 Hood Type
               </Label>
               <Select name="hoodType">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -592,7 +696,7 @@ export function QuoteForm() {
                 Approximate Hood Length
               </Label>
               <Select name="hoodLength">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select length" />
                 </SelectTrigger>
                 <SelectContent>
@@ -609,7 +713,7 @@ export function QuoteForm() {
                 Last Cleaned
               </Label>
               <Select name="hoodLastCleaned">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select timeframe" />
                 </SelectTrigger>
                 <SelectContent>
@@ -626,7 +730,7 @@ export function QuoteForm() {
                 Number of Filters
               </Label>
               <Select name="hoodFilters">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="How many filters?" />
                 </SelectTrigger>
                 <SelectContent>
@@ -643,7 +747,7 @@ export function QuoteForm() {
                 Rooftop Access Available?
               </Label>
               <Select name="hoodRoofAccess">
-                <SelectTrigger className="border-border bg-card text-card-foreground">
+                <SelectTrigger className={fieldCls}>
                   <SelectValue placeholder="Select access type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -662,7 +766,7 @@ export function QuoteForm() {
                 id="hood-notes"
                 name="hoodNotes"
                 placeholder="Any specific concerns about your hood vent system?"
-                className="border-border bg-card text-card-foreground"
+                className={fieldCls}
                 rows={3}
               />
             </div>
@@ -670,11 +774,31 @@ export function QuoteForm() {
         </div>
       )}
 
+      {/* Conditional: Other service details */}
+      {selectedServices.includes("other") && (
+        <div className="border-l-4 border-primary bg-primary/5 p-6">
+          <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-wide text-foreground">
+            Tell Us What You Need
+          </h3>
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="other-details" className="text-sm font-medium text-foreground">
+              Describe the job <span className="text-primary">*</span>
+            </Label>
+            <Textarea
+              id="other-details"
+              name="otherDetails"
+              required
+              placeholder="Tell us exactly what needs cleaning — fryers, flat tops, walk-in coolers, full kitchen deep clean, whatever it is. If we can't do it, we'll tell you straight."
+              className={fieldCls}
+              rows={4}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Preferred Schedule & Additional Notes */}
       <div>
-        <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-foreground">
-          Scheduling Preference
-        </h3>
+        <SectionTitle step="04">Scheduling Preference</SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-2">
             <Label htmlFor="preferred-date" className="text-sm font-medium text-foreground">
@@ -684,7 +808,7 @@ export function QuoteForm() {
               id="preferred-date"
               name="preferredDate"
               type="date"
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -692,7 +816,7 @@ export function QuoteForm() {
               Preferred Time
             </Label>
             <Select name="preferredTime">
-              <SelectTrigger className="border-border bg-card text-card-foreground">
+              <SelectTrigger className={fieldCls}>
                 <SelectValue placeholder="Select a time" />
               </SelectTrigger>
               <SelectContent>
@@ -712,7 +836,7 @@ export function QuoteForm() {
               id="additional-notes"
               name="additionalNotes"
               placeholder="Anything else we should know? Access instructions, parking, special requirements..."
-              className="border-border bg-card text-card-foreground"
+              className={fieldCls}
               rows={4}
             />
           </div>
@@ -742,7 +866,7 @@ export function QuoteForm() {
             />
             <label
               htmlFor="quote-photos"
-              className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border bg-muted/40 px-6 py-8 text-center transition-colors hover:border-primary/50 hover:bg-muted/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="flex cursor-pointer flex-col items-center justify-center gap-2 border-2 border-dashed border-border bg-muted/40 px-6 py-8 text-center transition-colors hover:border-primary/50 hover:bg-muted/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <ImagePlus className="h-10 w-10 text-muted-foreground" aria-hidden />
               <span className="text-sm font-medium text-foreground">Choose photos</span>
@@ -802,7 +926,7 @@ export function QuoteForm() {
           type="submit"
           size="lg"
           disabled={selectedServices.length === 0 || isSubmitting}
-          className="bg-primary px-8 text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+          className="dd-sheen bg-primary px-10 py-6 font-[family-name:var(--font-oswald)] text-base font-semibold uppercase tracking-wider text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
         >
           {isSubmitting ? (
             <>

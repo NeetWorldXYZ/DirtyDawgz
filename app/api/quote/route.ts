@@ -116,7 +116,19 @@ Notes: ${data.hoodNotes || "N/A"}
 `
   }
 
+  if (data.otherDetails) {
+    emailBody += `
+OTHER SERVICE REQUESTED
+--------------------
+${data.otherDetails}
+`
+  }
+
   emailBody += `
+RECURRING SERVICE PLAN
+--------------------
+Interested in a recurring service plan: ${data.servicePlanInterest || "N/A"}
+
 SCHEDULING PREFERENCE
 --------------------
 Preferred Date: ${data.preferredDate || "N/A"}
@@ -240,6 +252,14 @@ async function generateQuotePdf(data: any, travelMiles: number | null): Promise<
       { label: "Notes", value: data.hoodNotes },
     ])
   }
+
+  if (data.otherDetails) {
+    addSection("Other Service Requested", [{ label: "Details", value: data.otherDetails }])
+  }
+
+  addSection("Recurring Service Plan", [
+    { label: "Interested", value: data.servicePlanInterest },
+  ])
 
   addSection("Scheduling Preference", [
     { label: "Preferred Date", value: data.preferredDate },
