@@ -7,14 +7,6 @@ export const FACEBOOK_URL =
 /** Customer portal front door — passwordless login by billing email. */
 export const PORTAL_URL = "https://app.dirtydawgzovencleaning.com/portal"
 
-/**
- * Where the reviews section and footer send people to read reviews.
- * Currently the Facebook page (Google Business Profile isn't live yet) —
- * once GBP is set up, point this at the Google reviews link instead.
- */
-export const REVIEWS_URL = FACEBOOK_URL
-export const REVIEWS_SOURCE = "Facebook"
-
 export interface BeforeAfterPair {
   /** Path under /public, e.g. "/images/work/hood-before.jpg" */
   before?: string

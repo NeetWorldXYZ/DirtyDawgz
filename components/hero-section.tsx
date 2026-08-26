@@ -77,7 +77,6 @@ export function HeroSection() {
         >
           <div className="relative">
             <div className="absolute -inset-6 rounded-full bg-primary/15 blur-3xl" />
-            <div className="absolute -inset-1 rounded-full border border-white/10" />
             <Image
               src="/images/logo.png"
               alt="Dirty Dawgz Oven Cleaning LLC mascot"
