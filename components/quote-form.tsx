@@ -302,46 +302,70 @@ export function QuoteForm() {
           </p>
         )}
 
-        {/* Recurring service plan interest */}
+        {/* Other service write-in — right below the tiles so it opens in place */}
+        {selectedServices.includes("other") && (
+          <div className="mt-3 border-l-4 border-primary bg-primary/5 p-5">
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="other-details" className="text-sm font-semibold text-foreground">
+                Describe the job <span className="text-primary">*</span>
+              </Label>
+              <Textarea
+                id="other-details"
+                name="otherDetails"
+                required
+                placeholder="Tell us exactly what needs cleaning — fryers, flat tops, walk-in coolers, full kitchen deep clean, whatever it is. If we can't do it, we'll tell you straight."
+                className={fieldCls}
+                rows={4}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Recurring service plan — the money-saver banner, styled apart from the tiles */}
         <button
           type="button"
           role="checkbox"
           aria-checked={planInterest}
           onClick={() => setPlanInterest((v) => !v)}
-          className={`mt-4 flex w-full items-center gap-4 border p-4 text-left transition-all duration-200 ${
+          className={`dd-stripes relative mt-6 block w-full overflow-hidden border-2 bg-[#141414] p-5 text-left transition-all duration-200 sm:p-6 ${
             planInterest
-              ? "border-primary bg-[#161616] text-white"
-              : "border-border bg-card hover:border-primary/40"
+              ? "border-primary shadow-lg shadow-primary/25"
+              : "border-primary/40 hover:border-primary hover:shadow-md hover:shadow-primary/15"
           }`}
         >
-          <div
-            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center border ${
-              planInterest ? "border-primary bg-primary text-primary-foreground" : "border-primary/25 bg-primary/10 text-primary"
-            }`}
-          >
-            <Gauge className="h-5 w-5" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p
-              className={`font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-tight ${
-                planInterest ? "text-white" : "text-card-foreground"
+          <span className="absolute right-0 top-0 bg-primary px-3 py-1 font-[family-name:var(--font-oswald)] text-[11px] font-bold uppercase tracking-[0.2em] text-primary-foreground">
+            Save Money
+          </span>
+          <div className="flex items-center gap-4 pr-8 sm:gap-5">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center border border-primary bg-primary/20 sm:h-14 sm:w-14">
+              <Gauge className="h-6 w-6 text-primary sm:h-7 sm:w-7" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="font-[family-name:var(--font-oswald)] text-base font-bold uppercase tracking-tight text-white sm:text-lg">
+                Save with a recurring service plan
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-white/65 sm:text-sm">
+                Plan customers get discounted recurring rates — and we track your cleaning
+                schedule and contact you when equipment is due, so you never have to remember
+                a date.
+              </p>
+            </div>
+            <div
+              className={`flex h-7 w-7 flex-shrink-0 items-center justify-center border-2 transition-colors ${
+                planInterest ? "border-primary bg-primary" : "border-white/30 bg-transparent"
               }`}
+              aria-hidden
             >
-              I&apos;m interested in a recurring service plan
-            </p>
-            <p className={`text-xs ${planInterest ? "text-white/60" : "text-muted-foreground"}`}>
-              We track your cleaning schedule and contact you when equipment is due — you never
-              have to remember a date.
-            </p>
+              {planInterest && <Check className="h-5 w-5 text-primary-foreground" />}
+            </div>
           </div>
-          <div
-            className={`flex h-5 w-5 flex-shrink-0 items-center justify-center border ${
-              planInterest ? "border-primary bg-primary" : "border-border bg-card"
+          <p
+            className={`mt-3 font-[family-name:var(--font-oswald)] text-xs font-semibold uppercase tracking-[0.2em] ${
+              planInterest ? "text-primary" : "text-white/40"
             }`}
-            aria-hidden
           >
-            {planInterest && <Check className="h-3.5 w-3.5 text-primary-foreground" />}
-          </div>
+            {planInterest ? "✓ Added — we'll include plan pricing in your quote" : "Tap to add plan pricing to your quote"}
+          </p>
         </button>
       </div>
 
@@ -770,28 +794,6 @@ export function QuoteForm() {
                 rows={3}
               />
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Conditional: Other service details */}
-      {selectedServices.includes("other") && (
-        <div className="border-l-4 border-primary bg-primary/5 p-6">
-          <h3 className="mb-4 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-wide text-foreground">
-            Tell Us What You Need
-          </h3>
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="other-details" className="text-sm font-medium text-foreground">
-              Describe the job <span className="text-primary">*</span>
-            </Label>
-            <Textarea
-              id="other-details"
-              name="otherDetails"
-              required
-              placeholder="Tell us exactly what needs cleaning — fryers, flat tops, walk-in coolers, full kitchen deep clean, whatever it is. If we can't do it, we'll tell you straight."
-              className={fieldCls}
-              rows={4}
-            />
           </div>
         </div>
       )}
