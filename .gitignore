@@ -8,4 +8,5 @@ node_modules/
 .pnpm-store/
 .next/
 .env*.local
-.DS_Storetsconfig.tsbuildinfo
+.DS_Store
+tsconfig.tsbuildinfo
