@@ -1,11 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail, Facebook } from "lucide-react"
+import { Phone, Mail, Facebook, Star } from "lucide-react"
+import { PHONE_DISPLAY, PHONE_TEL, EMAIL, FACEBOOK_URL, GOOGLE_REVIEWS_URL } from "@/lib/site"
 
 export function SiteFooter() {
   return (
-    <footer className="bg-secondary text-secondary-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+    <footer className="border-t border-white/10 bg-[#0e0e0e] text-secondary-foreground">
+      <div className="mx-auto max-w-7xl px-4 pb-28 pt-16 md:pb-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
@@ -21,19 +22,21 @@ export function SiteFooter() {
                 <p className="font-[family-name:var(--font-oswald)] text-xl font-bold uppercase tracking-wide text-primary-foreground">
                   Dirty Dawgz
                 </p>
-                <p className="font-[family-name:var(--font-oswald)] text-xs uppercase tracking-widest text-primary-foreground/60">
-                  Oven Cleaning LLC
+                <p className="font-[family-name:var(--font-oswald)] text-xs uppercase tracking-[0.25em] text-primary-foreground/60">
+                  Commercial Kitchen Cleaning
                 </p>
               </div>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-secondary-foreground/60">
-              {"Michigan's premier commercial kitchen cleaning company. Got a dirty oven? Call the Dirty Dawgz! Proudly serving all of Michigan."}
+              Michigan&apos;s commercial kitchen cleaning specialists — commercial oven cleaning,
+              hood &amp; exhaust system cleaning, and grease trap service. Got a dirty kitchen?
+              Send in the Dawgz.
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="mb-4 font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-widest text-primary-foreground">
+            <h4 className="mb-4 font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-[0.25em] text-primary-foreground">
               Services
             </h4>
             <ul className="flex flex-col gap-3">
@@ -42,7 +45,15 @@ export function SiteFooter() {
                   href="/ovencleaning"
                   className="text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
                 >
-                  Conveyor Oven Cleaning
+                  Commercial Oven Cleaning
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/hoodcleaning"
+                  className="text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
+                >
+                  Hood &amp; Exhaust Cleaning
                 </Link>
               </li>
               <li>
@@ -55,15 +66,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link
-                  href="/hoodcleaning"
-                  className="text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
-                >
-                  Hood Vent Cleaning
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#service-area"
+                  href="/#service-area"
                   className="text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
                 >
                   Service Area
@@ -74,26 +77,26 @@ export function SiteFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-widest text-primary-foreground">
+            <h4 className="mb-4 font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-[0.25em] text-primary-foreground">
               Contact
             </h4>
             <div className="flex flex-col gap-4">
               <a
-                href="tel:2692481209"
+                href={PHONE_TEL}
                 className="flex items-center gap-2 text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
               >
                 <Phone className="h-4 w-4" />
-                (269) 248-1209
+                {PHONE_DISPLAY}
               </a>
               <a
-                href="mailto:info@dirtydawgzovencleaning.com"
+                href={`mailto:${EMAIL}`}
                 className="flex items-center gap-2 text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
               >
                 <Mail className="h-4 w-4" />
-                <span className="break-all">info@dirtydawgzovencleaning.com</span>
+                <span className="break-all">{EMAIL}</span>
               </a>
               <a
-                href="https://www.facebook.com/people/Dirty-Dawgz-Oven-Cleaning-LLC/61586346754471/"
+                href={FACEBOOK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
@@ -101,13 +104,23 @@ export function SiteFooter() {
                 <Facebook className="h-4 w-4" />
                 Follow us on Facebook
               </a>
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
+              >
+                <Star className="h-4 w-4" />
+                Review us on Google
+              </a>
             </div>
           </div>
         </div>
 
         <div className="mt-12 border-t border-secondary-foreground/10 pt-8">
           <p className="text-center text-xs text-secondary-foreground/40">
-            {new Date().getFullYear()} Dirty Dawgz Oven Cleaning LLC. All rights reserved. Proudly serving all of Michigan.
+            {new Date().getFullYear()} Dirty Dawgz Oven Cleaning LLC. All rights reserved. Proudly
+            serving all of Michigan.
           </p>
         </div>
       </div>

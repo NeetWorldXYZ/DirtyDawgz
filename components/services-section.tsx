@@ -1,49 +1,55 @@
 import Link from "next/link"
 import { Flame, Wind, Droplets, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/motion"
 
 const services = [
   {
+    number: "01",
     icon: Flame,
-    title: "Commercial Conveyor Oven Cleaning",
+    title: "Commercial Oven Cleaning",
     href: "/ovencleaning",
+    tagline: "Conveyor • Pizza • Deck Ovens",
     description:
-      "Conveyor ovens run non-stop, and built-up grease and carbon can slow production, create fire hazards, and affect food quality. Our deep-clean process strips away every layer of baked-on residue, restoring your oven to peak performance. We work around your schedule to minimize downtime and get you back to full operation fast.",
+      "Deep cleaning for conveyor ovens, pizza ovens, deck ovens, and commercial cooking equipment. We strip away every layer of baked-on grease and carbon and bring your oven back to factory-clean condition.",
     features: [
       "Complete disassembly and deep cleaning",
-      "Carbon and grease buildup removal",
+      "Carbon and grease removal",
       "Conveyor belt and chamber detailing",
-      "Fire hazard reduction",
-      "Improved energy efficiency",
+      "Improved cook quality and efficiency",
     ],
+    cta: "Explore Oven Cleaning",
   },
   {
+    number: "02",
+    icon: Wind,
+    title: "Hood & Exhaust Cleaning",
+    href: "/hoodcleaning",
+    tagline: "Hoods • Ducts • Rooftop Fans",
+    description:
+      "Complete commercial kitchen exhaust cleaning to NFPA 96 standards — hoods, filters, plenums, ductwork, and rooftop exhaust fans. Your first line of defense against grease fires, fully documented.",
+    features: [
+      "Hood-to-rooftop system cleaning",
+      "NFPA 96 compliance & certificate",
+      "Filter degreasing and restoration",
+      "Before & after photo documentation",
+    ],
+    cta: "Explore Hood Cleaning",
+  },
+  {
+    number: "03",
     icon: Droplets,
     title: "Grease Trap Cleaning",
     href: "/greasetrapcleaning",
+    tagline: "Pump-Outs • Scraping • Compliance",
     description:
-      "A neglected grease trap is a ticking time bomb for your kitchen. Overflows, foul odors, and health code violations are just the beginning. Our thorough grease trap cleaning service pumps, scrapes, and restores your trap to full capacity, keeping you compliant and your kitchen running smoothly.",
+      "Scheduled grease trap cleaning built for restaurants and commercial kitchens. Full pump-outs, wall and baffle scraping, and compliant disposal — with service records for every visit.",
     features: [
       "Full pump-out and disposal",
       "Wall and baffle scraping",
-      "Flow testing and inspection",
-      "Health code compliance",
-      "Odor elimination",
+      "Health code compliance records",
+      "Recurring schedules available",
     ],
-  },
-  {
-    icon: Wind,
-    title: "Hood Vent Cleaning",
-    href: "/hoodcleaning",
-    description:
-      "Your hood vent system is your kitchen's first line of defense against grease fires. Over time, grease accumulates in filters, ductwork, and fans, creating a serious safety risk. Our certified technicians clean every component from hood to rooftop, ensuring your system meets NFPA 96 standards and protects your business.",
-    features: [
-      "Complete hood-to-fan cleaning",
-      "Filter degreasing and restoration",
-      "Ductwork and fan cleaning",
-      "NFPA 96 compliance",
-      "Before and after documentation",
-    ],
+    cta: "Explore Grease Trap Cleaning",
   },
 ]
 
@@ -51,50 +57,61 @@ export function ServicesSection() {
   return (
     <section id="services" className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+        <Reveal className="mb-16 max-w-3xl">
+          <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             What We Do
           </p>
-          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase tracking-tight text-foreground md:text-4xl">
-            Our Services
+          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-foreground md:text-5xl">
+            Three Dirty Jobs. <span className="text-primary">One Crew.</span>
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            {"From conveyor ovens to grease traps and hood vents, businesses across Michigan trust the Dirty Dawgz to deliver thorough, professional cleaning that keeps commercial kitchens safe, efficient, and code-compliant."}
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Ovens, hood systems, and grease traps — the greasiest equipment in a commercial
+            kitchen is all we do. Businesses across Michigan trust the Dawgz to keep their
+            kitchens safe, efficient, and code-compliant.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group flex flex-col rounded-xl border border-border bg-card p-8 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
-            >
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10">
-                <service.icon className="h-7 w-7 text-primary" />
-              </div>
-              <h3 className="font-[family-name:var(--font-oswald)] text-xl font-bold uppercase tracking-tight text-card-foreground">
-                {service.title}
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                {service.description}
-              </p>
-              <ul className="mt-6 flex flex-col gap-2">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-card-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <Button
-                asChild
-                className="mt-6 w-full bg-primary text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md"
+        <div className="grid gap-6 lg:grid-cols-3">
+          {services.map((service, i) => (
+            <Reveal key={service.title} delay={i * 120} className="h-full">
+              <Link
+                href={service.href}
+                className="group flex h-full flex-col border border-border bg-[#161616] p-8 text-secondary-foreground transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/10"
               >
-                <Link href={service.href} className="inline-flex items-center justify-center gap-2">
-                  Learn More <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-            </div>
+                <div className="flex items-start justify-between">
+                  <span className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-white/10 transition-colors duration-300 group-hover:text-primary/40">
+                    {service.number}
+                  </span>
+                  <div className="flex h-12 w-12 items-center justify-center border border-primary/30 bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
+                    <service.icon className="h-6 w-6 text-primary" />
+                  </div>
+                </div>
+
+                <h3 className="mt-6 font-[family-name:var(--font-oswald)] text-2xl font-bold uppercase leading-tight tracking-tight text-white">
+                  {service.title}
+                </h3>
+                <p className="mt-1 font-[family-name:var(--font-oswald)] text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                  {service.tagline}
+                </p>
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-white/60">
+                  {service.description}
+                </p>
+
+                <ul className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5 text-sm text-white/80">
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rotate-45 bg-primary" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <span className="mt-7 inline-flex items-center gap-2 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                  {service.cta}
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                </span>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>

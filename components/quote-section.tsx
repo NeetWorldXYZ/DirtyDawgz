@@ -5,16 +5,16 @@ export function QuoteSection() {
   return (
     <section id="quote" className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+        <div className="mb-12 max-w-3xl">
+          <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             Get Started
           </p>
-          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase tracking-tight text-foreground md:text-4xl">
-            Request a Free Quote
+          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-foreground md:text-5xl">
+            Request a <span className="text-primary">Free Quote</span>
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Tell us about your cleaning needs and we will put together a custom quote for your
-            business. No obligation, no hassle.
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Tell us about your kitchen and equipment and we will put together a custom quote for
+            your business. No obligation, no hassle.
           </p>
         </div>
 

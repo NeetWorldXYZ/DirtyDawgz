@@ -85,7 +85,182 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: #c41e2a;
+    color: #ffffff;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion + texture utilities for the industrial redesign
+ * ------------------------------------------------------------------------- */
+
+@keyframes dd-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dd-sheen {
+  0%,
+  55% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(240%) skewX(-18deg);
+  }
+}
+
+@keyframes dd-ember {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes dd-scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes dd-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dd-marquee-track {
+  animation: dd-marquee 32s linear infinite;
+}
+.dd-marquee:hover .dd-marquee-track {
+  animation-play-state: paused;
+}
+
+.dd-ember {
+  animation: dd-ember 7s ease-in-out infinite;
+}
+
+.dd-scroll-dot {
+  animation: dd-scroll-dot 1.8s ease-in-out infinite;
+}
+
+.dd-hero-enter {
+  opacity: 0;
+  animation: dd-fade-up 0.9s ease-out forwards;
+}
+
+.dd-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.dd-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  animation: dd-sheen 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Brushed stainless-steel panel: soft reflective bands + fine horizontal grain */
+.dd-steel {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.07) 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(
+      105deg,
+      #9ba1a8 0%,
+      #c8ccd1 18%,
+      #eef0f2 32%,
+      #b4bac0 48%,
+      #d8dbde 62%,
+      #a8aeb5 78%,
+      #cfd3d7 100%
+    );
+}
+
+/* Baked-on grease panel: carbon base, grease blotches, wipe streaks */
+.dd-grime {
+  background-color: #120d08;
+  background-image:
+    radial-gradient(ellipse 25% 18% at 68% 28%, rgba(151, 103, 38, 0.5), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 22% 34%, rgba(96, 64, 22, 0.55), transparent 70%),
+    radial-gradient(ellipse 30% 24% at 45% 70%, rgba(120, 80, 28, 0.45), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 78%, rgba(58, 38, 12, 0.6), transparent 70%),
+    repeating-linear-gradient(
+      105deg,
+      rgba(0, 0, 0, 0.4) 0px,
+      transparent 7px,
+      rgba(20, 12, 4, 0.3) 14px,
+      transparent 22px
+    );
+}
+
+/* Keep anchored sections clear of the sticky header */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+/* Subtle diagonal hazard/texture striping for dark sections */
+.dd-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .dd-marquee-track,
+  .dd-ember,
+  .dd-scroll-dot,
+  .dd-hero-enter {
+    animation: none;
+  }
+  .dd-hero-enter {
+    opacity: 1;
+  }
+  .dd-sheen::after {
+    display: none;
   }
 }

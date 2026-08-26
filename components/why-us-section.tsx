@@ -1,64 +1,92 @@
-import { Shield, Clock, Award, ThumbsUp } from "lucide-react"
+import { Flame, Camera, CalendarClock, FileText, Wrench, MapPin, RefreshCcw, Wind } from "lucide-react"
+import { Reveal } from "@/components/motion"
 
 const reasons = [
   {
-    icon: Shield,
-    title: "Safety First",
+    icon: Flame,
+    title: "Commercial Kitchen Specialists",
     description:
-      "We prioritize fire safety and code compliance in every job. A clean kitchen is a safe kitchen, and we make sure yours meets the highest standards.",
+      "We don't clean offices or carpets. Ovens, hood systems, and grease traps are the whole job — and we're built for them.",
   },
   {
-    icon: Clock,
-    title: "Minimal Downtime",
+    icon: Wrench,
+    title: "Professional Equipment",
     description:
-      "We know every hour your kitchen is offline costs money. Our team works efficiently around your schedule to get you back to business fast.",
+      "Commercial-grade degreasers, pressure equipment, and tools made for baked-on carbon — not a mop bucket and a prayer.",
   },
   {
-    icon: Award,
-    title: "Experienced Professionals",
+    icon: Wind,
+    title: "Hood-to-Rooftop Exhaust Cleaning",
     description:
-      "Our technicians are trained, experienced, and equipped with commercial-grade tools and eco-friendly cleaning solutions to tackle even the toughest jobs.",
+      "Filters, plenums, ductwork, and rooftop fans cleaned to NFPA 96 standards, with a certificate for your records.",
   },
   {
-    icon: ThumbsUp,
-    title: "Satisfaction Guaranteed",
+    icon: Camera,
+    title: "Before & After Documentation",
     description:
-      "We stand behind every job we do. If you're not satisfied with the results, we'll come back and make it right. That's the Dirty Dawgz promise.",
+      "Every job is photographed before and after, so you — and your insurance company — can see exactly what was done.",
+  },
+  {
+    icon: FileText,
+    title: "Detailed Service Reports",
+    description:
+      "Written reports with findings and recommendations after every visit. Paperwork inspectors actually want to see.",
+  },
+  {
+    icon: RefreshCcw,
+    title: "Recurring Service Programs",
+    description:
+      "We track your cleaning schedule and show up when service is due. You never have to remember a date.",
+  },
+  {
+    icon: CalendarClock,
+    title: "Flexible Scheduling",
+    description:
+      "Nights, weekends, off-hours — we work around your service windows so your kitchen never loses production time.",
+  },
+  {
+    icon: MapPin,
+    title: "Michigan-Based Crews",
+    description:
+      "Locally owned and operated. When you call, you talk to the crew that shows up — not a national call center.",
   },
 ]
 
 export function WhyUsSection() {
   return (
-    <section id="why-us" className="bg-secondary py-20 text-secondary-foreground lg:py-28">
+    <section id="why-us" className="bg-background py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
-            Why Choose Us
+        <Reveal className="mb-16 max-w-3xl">
+          <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+            Why Dirty Dawgz
           </p>
-          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase tracking-tight text-primary-foreground md:text-4xl">
-            The Dirty Dawgz Difference
+          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-foreground md:text-5xl">
+            Not Your Average <span className="text-primary">Cleaning Company.</span>
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-secondary-foreground/70">
-            {"When you call the Dirty Dawgz, you get Michigan's most trusted cleaning team. We treat your kitchen like our own and proudly serve communities across the entire state."}
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Dirty Dawgz specializes in the difficult, greasy equipment inside commercial
+            kitchens — the work most cleaning companies won&apos;t touch. That focus shows in
+            the results.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((reason) => (
-            <div
+        <div className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {reasons.map((reason, i) => (
+            <Reveal
               key={reason.title}
-              className="flex flex-col items-center text-center"
+              delay={(i % 4) * 90}
+              className="group flex h-full flex-col bg-card p-7 transition-colors duration-300 hover:bg-[#161616]"
             >
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
-                <reason.icon className="h-8 w-8 text-primary" />
+              <div className="mb-4 flex h-11 w-11 items-center justify-center border border-primary/25 bg-primary/10">
+                <reason.icon className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-primary-foreground">
+              <h3 className="font-[family-name:var(--font-oswald)] text-base font-bold uppercase tracking-tight text-card-foreground transition-colors duration-300 group-hover:text-white">
                 {reason.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-secondary-foreground/70">
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-white/60">
                 {reason.description}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

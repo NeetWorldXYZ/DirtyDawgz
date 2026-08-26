@@ -14,6 +14,8 @@ export default function OvenCleaningPage() {
       title="Commercial Conveyor Oven Cleaning"
       subtitle="Oven Cleaning Experts"
       icon={Flame}
+      schemaServiceName="Commercial Oven Cleaning"
+      schemaDescription="Professional commercial oven cleaning in Michigan for conveyor ovens, pizza ovens, and commercial cooking equipment, including deep cleaning of belts, chambers, and heating elements."
       heroDescription="Conveyor ovens are the backbone of high-volume commercial kitchens. When grease, carbon, and food debris build up, your oven works harder, cooks unevenly, and becomes a serious fire hazard. The Dirty Dawgz bring your oven back to factory-clean condition so your kitchen runs at peak performance."
       whyTitle="Why Regular Oven Cleaning Is Critical"
       whyPoints={[
@@ -40,6 +42,56 @@ export default function OvenCleaningPage() {
         {
           heading: "Reduced Downtime",
           text: "A well-maintained oven breaks down less often. By preventing buildup-related mechanical issues, you avoid unexpected downtime that costs you money and frustrates your team.",
+        },
+      ]}
+      processTitle="Factory-Clean, Piece by Piece"
+      process={[
+        {
+          step: "Disassembly",
+          detail:
+            "Conveyor belts, crumb trays, fingers, and access panels removed so nothing gets cleaned 'around.'",
+        },
+        {
+          step: "Deep Clean",
+          detail:
+            "Baked-on carbon and grease stripped from chambers, belts, and components with commercial-grade degreasers and tooling.",
+        },
+        {
+          step: "Reassembly & Check",
+          detail:
+            "Everything reassembled and checked so your oven is ready for the next shift, not sitting in pieces.",
+        },
+        {
+          step: "Walkthrough & Photos",
+          detail:
+            "A before/after walkthrough with photo documentation, so you see exactly what was done.",
+        },
+      ]}
+      faq={[
+        {
+          question: "What types of commercial ovens do you clean?",
+          answer:
+            "We clean conveyor ovens -- including XLT, Middleby Marshall, and similar brands -- along with pizza ovens, deck ovens, and other commercial cooking equipment used in restaurants, pizza shops, and commercial kitchens across Michigan.",
+        },
+        {
+          question: "How long does a commercial oven cleaning take?",
+          answer:
+            "Most conveyor oven deep cleanings are completed in a single visit, scheduled during your off-hours so the oven is cool to start and back in production for your next shift. Timing depends on oven size and buildup, and we confirm it in your quote.",
+        },
+        {
+          question: "Will cleaning interrupt my kitchen's schedule?",
+          answer:
+            "No. We work nights, early mornings, and off-days around your operating hours. The goal is that the only difference your crew notices is an oven that looks and runs like new.",
+        },
+        {
+          question: "Why does a clean conveyor oven matter for food quality?",
+          answer:
+            "Carbon buildup changes how heat moves through the chamber, which causes uneven bakes and off flavors. A clean oven restores even heat distribution and consistent cook times, and it uses less energy doing it.",
+        },
+        {
+          question: "Do you offer recurring oven cleaning schedules?",
+          answer:
+            "Yes -- most of our oven customers are on a recurring plan. We track your interval based on your volume and contact you when a cleaning is due, so the oven never gets back to 'never been cleaned' condition.",
         },
       ]}
       frequencyTitle="How Often Should You Clean Your Conveyor Oven?"
