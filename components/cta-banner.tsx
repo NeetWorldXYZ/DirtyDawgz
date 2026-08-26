@@ -22,7 +22,7 @@ export function CtaBanner() {
             size="lg"
             className="bg-[#141414] px-10 py-6 font-[family-name:var(--font-oswald)] text-lg font-semibold uppercase tracking-wider text-white hover:bg-[#141414]/90"
           >
-            <Link href="#quote">Get a Free Quote</Link>
+            <a href="/#quote">Get a Free Quote</a>
           </Button>
           <Button
             asChild

@@ -1,6 +1,6 @@
-import { Star, ExternalLink } from "lucide-react"
+import { Star, Facebook, ExternalLink } from "lucide-react"
 import { Reveal } from "@/components/motion"
-import { GOOGLE_REVIEWS, GOOGLE_REVIEWS_URL } from "@/lib/site"
+import { CUSTOMER_REVIEWS, REVIEWS_URL, REVIEWS_SOURCE } from "@/lib/site"
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -28,9 +28,9 @@ export function ReviewsSection() {
           </h2>
         </Reveal>
 
-        {GOOGLE_REVIEWS.length > 0 ? (
+        {CUSTOMER_REVIEWS.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {GOOGLE_REVIEWS.map((review, i) => (
+            {CUSTOMER_REVIEWS.map((review, i) => (
               <Reveal key={review.author} delay={i * 110}>
                 <div className="flex h-full flex-col border border-white/10 bg-white/[0.03] p-7">
                   <Stars rating={review.rating} />
@@ -43,32 +43,30 @@ export function ReviewsSection() {
                       <span className="font-normal text-white/50"> — {review.city}</span>
                     ) : null}
                   </p>
-                  <p className="mt-1 text-xs text-white/40">Review from Google</p>
+                  <p className="mt-1 text-xs text-white/40">Review from {review.source}</p>
                 </div>
               </Reveal>
             ))}
           </div>
         ) : null}
 
-        <Reveal delay={150} className={GOOGLE_REVIEWS.length > 0 ? "mt-10" : ""}>
+        <Reveal delay={150} className={CUSTOMER_REVIEWS.length > 0 ? "mt-10" : ""}>
           <a
-            href={GOOGLE_REVIEWS_URL}
+            href={REVIEWS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-start gap-4 border border-white/10 bg-white/[0.03] p-8 transition-colors duration-300 hover:border-primary/50 sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="flex items-center gap-4">
-              <div className="flex gap-1">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <Star key={i} className="h-6 w-6 fill-[#fbbc04] text-[#fbbc04]" />
-                ))}
+              <div className="flex h-12 w-12 items-center justify-center border border-primary/25 bg-primary/10">
+                <Facebook className="h-6 w-6 text-primary" />
               </div>
               <p className="font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-wider text-white">
-                Rated on Google
+                Real reviews from real Michigan kitchens
               </p>
             </div>
             <span className="inline-flex items-center gap-2 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.2em] text-primary transition-colors group-hover:text-white">
-              Read Our Google Reviews
+              Read Our {REVIEWS_SOURCE} Reviews
               <ExternalLink className="h-4 w-4" />
             </span>
           </a>

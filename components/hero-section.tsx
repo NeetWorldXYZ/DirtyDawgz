@@ -55,7 +55,7 @@ export function HeroSection() {
               size="lg"
               className="dd-sheen bg-primary px-10 py-6 font-[family-name:var(--font-oswald)] text-lg font-semibold uppercase tracking-wider text-primary-foreground hover:bg-primary/90"
             >
-              <Link href="#quote">Get a Free Quote</Link>
+              <a href="/#quote">Get a Free Quote</a>
             </Button>
             <Button
               asChild

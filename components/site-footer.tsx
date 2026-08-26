@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Phone, Mail, Facebook, Star } from "lucide-react"
-import { PHONE_DISPLAY, PHONE_TEL, EMAIL, FACEBOOK_URL, GOOGLE_REVIEWS_URL } from "@/lib/site"
+import { Phone, Mail, Facebook, KeyRound } from "lucide-react"
+import { PHONE_DISPLAY, PHONE_TEL, EMAIL, FACEBOOK_URL, PORTAL_URL } from "@/lib/site"
 
 export function SiteFooter() {
   return (
@@ -105,13 +105,11 @@ export function SiteFooter() {
                 Follow us on Facebook
               </a>
               <a
-                href={GOOGLE_REVIEWS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={PORTAL_URL}
                 className="flex items-center gap-2 text-sm text-secondary-foreground/60 transition-colors hover:text-primary"
               >
-                <Star className="h-4 w-4" />
-                Review us on Google
+                <KeyRound className="h-4 w-4" />
+                Customer Portal Login
               </a>
             </div>
           </div>

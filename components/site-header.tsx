@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Menu, Phone, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/site"
+import { PHONE_DISPLAY, PHONE_TEL, PORTAL_URL } from "@/lib/site"
 
 const navLinks = [
   { href: "/ovencleaning", label: "Oven Cleaning" },
@@ -64,6 +64,12 @@ export function SiteHeader() {
               {link.label}
             </a>
           ))}
+          <a
+            href={PORTAL_URL}
+            className="font-[family-name:var(--font-oswald)] text-sm font-medium uppercase tracking-wider text-secondary-foreground/60 transition-colors hover:text-primary"
+          >
+            Customer Login
+          </a>
           <Link
             href={PHONE_TEL}
             className="flex items-center gap-2 text-sm font-semibold text-secondary-foreground/90 transition-colors hover:text-primary"
@@ -101,6 +107,13 @@ export function SiteHeader() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={PORTAL_URL}
+              onClick={() => setMobileMenuOpen(false)}
+              className="rounded-lg px-4 py-3 font-[family-name:var(--font-oswald)] text-sm font-medium uppercase tracking-wider text-secondary-foreground/60 transition-colors hover:bg-white/5 hover:text-primary"
+            >
+              Customer Login
+            </a>
             <Link
               href={PHONE_TEL}
               className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium text-secondary-foreground/80 transition-colors hover:bg-white/5 hover:text-primary"

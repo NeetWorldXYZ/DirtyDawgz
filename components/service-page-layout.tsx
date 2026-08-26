@@ -137,7 +137,7 @@ export function ServicePageLayout({
                   size="lg"
                   className="dd-sheen bg-primary px-8 font-[family-name:var(--font-oswald)] font-semibold uppercase tracking-wider text-primary-foreground hover:bg-primary/90"
                 >
-                  <Link href="/#quote">Request a Free Quote</Link>
+                  <a href="/#quote">Request a Free Quote</a>
                 </Button>
                 <Button
                   asChild
@@ -310,7 +310,7 @@ export function ServicePageLayout({
                   size="lg"
                   className="dd-sheen bg-primary px-8 font-[family-name:var(--font-oswald)] font-semibold uppercase tracking-wider text-primary-foreground hover:bg-primary/90"
                 >
-                  <Link href="/#quote">Get Your Free Quote</Link>
+                  <a href="/#quote">Get Your Free Quote</a>
                 </Button>
                 <Button
                   asChild

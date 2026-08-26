@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Reveal } from "@/components/motion"
 
@@ -54,13 +53,13 @@ export function HowItWorks() {
         </div>
 
         <Reveal delay={200} className="mt-14">
-          <Link
+          <a
             href="/#quote"
             className="group inline-flex items-center gap-3 font-[family-name:var(--font-oswald)] text-lg font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:text-white"
           >
             Start With Step One
             <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
-          </Link>
+          </a>
         </Reveal>
       </div>
     </section>

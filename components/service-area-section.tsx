@@ -106,7 +106,7 @@ export function ServiceAreaSection() {
               size="lg"
               className="dd-sheen mt-8 bg-primary px-10 py-6 font-[family-name:var(--font-oswald)] text-lg font-semibold uppercase tracking-wider text-primary-foreground hover:bg-primary/90"
             >
-              <Link href="/#quote">Get a Quote for Your Area</Link>
+              <a href="/#quote">Get a Quote for Your Area</a>
             </Button>
           </Reveal>
         </div>

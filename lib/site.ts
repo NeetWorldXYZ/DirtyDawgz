@@ -4,14 +4,16 @@ export const EMAIL = "info@dirtydawgzovencleaning.com"
 export const FACEBOOK_URL =
   "https://www.facebook.com/people/Dirty-Dawgz-Oven-Cleaning-LLC/61586346754471/"
 
+/** Customer portal front door — passwordless login by billing email. */
+export const PORTAL_URL = "https://app.dirtydawgzovencleaning.com/portal"
+
 /**
- * Link to the Dirty Dawgz Google Business Profile / reviews.
- * A Google search link works even without the short review URL; swap in the
- * g.page review link (https://g.page/r/.../review) once available for a
- * one-tap "leave a review" experience.
+ * Where the reviews section and footer send people to read reviews.
+ * Currently the Facebook page (Google Business Profile isn't live yet) —
+ * once GBP is set up, point this at the Google reviews link instead.
  */
-export const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/search?q=Dirty+Dawgz+Oven+Cleaning+Michigan+reviews"
+export const REVIEWS_URL = FACEBOOK_URL
+export const REVIEWS_SOURCE = "Facebook"
 
 export interface BeforeAfterPair {
   /** Path under /public, e.g. "/images/work/hood-before.jpg" */
@@ -39,17 +41,19 @@ export const PROOF_PAIRS: Record<"ovens" | "hoods" | "greasetraps", BeforeAfterP
   },
 }
 
-export interface GoogleReview {
+export interface CustomerReview {
   author: string
   rating: number
   text: string
   city?: string
+  /** Where the review was posted, e.g. "Facebook" or "Google" */
+  source: string
 }
 
 /**
- * Real Google reviews, hand-copied from the Dirty Dawgz Google Business
- * Profile. Leave empty until real reviews are pasted in — the reviews
- * section renders a "find us on Google" band instead of fake testimonials.
+ * Real customer reviews, hand-copied from Facebook (and later Google).
+ * Leave empty until real reviews are pasted in — the reviews section
+ * renders a "read our reviews" band instead of fake testimonials.
  * Never put invented reviews here.
  */
-export const GOOGLE_REVIEWS: GoogleReview[] = []
+export const CUSTOMER_REVIEWS: CustomerReview[] = []
