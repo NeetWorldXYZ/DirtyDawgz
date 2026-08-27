@@ -36,6 +36,8 @@ interface ServicePageProps {
   /** Schema.org service name, e.g. "Commercial Hood Cleaning" */
   schemaServiceName: string
   schemaDescription: string
+  /** Page path, e.g. "/hoodcleaning" — used for schema URLs and breadcrumbs */
+  path: string
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dirtydawgzovencleaning.com"
@@ -56,19 +58,34 @@ export function ServicePageLayout({
   faq,
   schemaServiceName,
   schemaDescription,
+  path,
 }: ServicePageProps) {
+  const pageUrl = `${siteUrl}${path}`
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    name: schemaServiceName,
     serviceType: schemaServiceName,
     description: schemaDescription,
+    url: pageUrl,
     areaServed: { "@type": "State", name: "Michigan" },
     provider: {
       "@type": "LocalBusiness",
+      "@id": `${siteUrl}/#business`,
       name: "Dirty Dawgz Oven Cleaning",
       telephone: "+1-269-248-1209",
       url: siteUrl,
     },
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: schemaServiceName, item: pageUrl },
+    ],
   }
 
   const faqSchema = faq?.length
@@ -88,6 +105,10 @@ export function ServicePageLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {faqSchema ? (
         <script

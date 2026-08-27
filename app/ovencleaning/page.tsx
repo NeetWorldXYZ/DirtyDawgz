@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Commercial Oven Cleaning | Dirty Dawgz Michigan",
   description:
     "Dirty Dawgz provides professional commercial oven cleaning for restaurants and pizza shops across Michigan. Deep cleaning for conveyor ovens and commercial kitchen equipment.",
+  alternates: { canonical: "/ovencleaning" },
 }
 
 export default function OvenCleaningPage() {
@@ -14,6 +15,7 @@ export default function OvenCleaningPage() {
       title="Commercial Conveyor Oven Cleaning"
       subtitle="Oven Cleaning Experts"
       icon={Flame}
+      path="/ovencleaning"
       schemaServiceName="Commercial Oven Cleaning"
       schemaDescription="Professional commercial oven cleaning in Michigan for conveyor ovens, pizza ovens, and commercial cooking equipment, including deep cleaning of belts, chambers, and heating elements."
       heroDescription="Conveyor ovens are the backbone of high-volume commercial kitchens. When grease, carbon, and food debris build up, your oven works harder, cooks unevenly, and becomes a serious fire hazard. The Dirty Dawgz bring your oven back to factory-clean condition so your kitchen runs at peak performance."

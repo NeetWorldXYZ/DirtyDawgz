@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     "grease trap cleaning near me",
     "grease trap pumping",
   ],
+  alternates: { canonical: "/greasetrapcleaning" },
+  openGraph: {
+    title: "Grease Trap Cleaning Michigan | Dirty Dawgz",
+    description:
+      "Commercial grease trap cleaning for Michigan restaurants — full pump-outs, scraping, compliant disposal, and written service records.",
+    url: "/greasetrapcleaning",
+    type: "website",
+  },
 }
 
 export default function GreaseTrapCleaningPage() {
@@ -22,6 +30,7 @@ export default function GreaseTrapCleaningPage() {
       title="Commercial Grease Trap Cleaning in Michigan"
       subtitle="Grease Trap Specialists"
       icon={Droplets}
+      path="/greasetrapcleaning"
       schemaServiceName="Grease Trap Cleaning"
       schemaDescription="Commercial grease trap cleaning and pumping service for restaurants and commercial kitchens in Michigan, including full pump-outs, scraping, compliant disposal, and service records."
       heroDescription="A clogged or neglected grease trap can shut down your kitchen in an instant. Overflows, sewer backups, foul odors, and hefty fines are all preventable with proper maintenance. The Dirty Dawgz pump, scrape, and restore your grease trap to full capacity -- keeping your kitchen compliant and running smoothly."

@@ -11,6 +11,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dirtydawgzovenclean
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: { canonical: '/' },
   title: 'Dirty Dawgz Oven Cleaning | Commercial Hood & Oven Cleaning Michigan',
   description:
     "Dirty Dawgz provides professional commercial oven cleaning, hood cleaning, and grease trap cleaning for restaurants across Michigan. Trusted kitchen exhaust cleaning for pizza shops, restaurants, and commercial kitchens.",
@@ -66,17 +67,24 @@ export const viewport: Viewport = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': `${siteUrl}/#business`,
   name: 'Dirty Dawgz Oven Cleaning',
   image: `${siteUrl}/images/logo.png`,
   url: siteUrl,
   telephone: '+1-269-248-1209',
-  areaServed: 'Michigan',
+  email: 'info@dirtydawgzovencleaning.com',
+  areaServed: { '@type': 'State', name: 'Michigan' },
   description:
     'Commercial oven cleaning, hood cleaning, and grease trap cleaning for restaurants and commercial kitchens.',
+  slogan: "Michigan's Commercial Kitchen Cleaning Specialists",
   serviceType: [
     'Commercial Oven Cleaning',
-    'Kitchen Hood Cleaning',
+    'Commercial Hood Cleaning',
+    'Kitchen Exhaust Cleaning',
     'Grease Trap Cleaning',
+  ],
+  sameAs: [
+    'https://www.facebook.com/people/Dirty-Dawgz-Oven-Cleaning-LLC/61586346754471/',
   ],
 }
 

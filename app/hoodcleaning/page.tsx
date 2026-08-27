@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     "hood cleaning near me",
     "kitchen exhaust system cleaning",
   ],
+  alternates: { canonical: "/hoodcleaning" },
+  openGraph: {
+    title: "Commercial Hood Cleaning Michigan | Dirty Dawgz",
+    description:
+      "NFPA 96 compliant restaurant hood and kitchen exhaust cleaning across Michigan — hoods, filters, ductwork, and rooftop fans, fully documented.",
+    url: "/hoodcleaning",
+    type: "website",
+  },
 }
 
 export default function HoodCleaningPage() {
@@ -23,6 +31,7 @@ export default function HoodCleaningPage() {
       title="Commercial Restaurant Hood Cleaning in Michigan"
       subtitle="Hood & Exhaust Experts"
       icon={Wind}
+      path="/hoodcleaning"
       schemaServiceName="Commercial Hood Cleaning"
       schemaDescription="NFPA 96 compliant commercial kitchen hood and exhaust system cleaning in Michigan, including hoods, filters, plenums, ductwork, and rooftop exhaust fans."
       heroDescription="Your exhaust hood system is your kitchen's first line of defense against grease fires. From filters to rooftop fans, grease accumulates in every component over time -- creating a dangerous and code-violating environment. The Dirty Dawgz clean your entire hood system top to bottom, ensuring NFPA 96 compliance and total peace of mind."
