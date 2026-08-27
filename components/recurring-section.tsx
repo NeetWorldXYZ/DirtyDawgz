@@ -46,18 +46,18 @@ export function RecurringSection() {
           </p>
         </Reveal>
 
-        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-6">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-6">
           {portalFeatures.map((feature, i) => (
             <Reveal key={feature.title} delay={(i % 2) * 110}>
-              <div className="flex h-full gap-4 border border-border bg-card p-4 sm:gap-5 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center border border-primary/25 bg-primary/10">
-                  <feature.icon className="h-6 w-6 text-primary" />
+              <div className="flex h-full flex-col gap-3 border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 sm:flex-row sm:gap-5 sm:p-7">
+                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-primary/25 bg-primary/10 sm:h-12 sm:w-12">
+                  <feature.icon className="h-4 w-4 text-primary sm:h-6 sm:w-6" />
                 </div>
                 <div>
-                  <h3 className="font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-card-foreground">
+                  <h3 className="font-[family-name:var(--font-oswald)] text-xs font-bold uppercase tracking-tight text-card-foreground sm:text-lg">
                     {feature.title}
                   </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{feature.text}</p>
+                  <p className="mt-1 hidden text-sm leading-relaxed text-muted-foreground sm:block">{feature.text}</p>
                 </div>
               </div>
             </Reveal>

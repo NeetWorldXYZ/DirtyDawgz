@@ -84,7 +84,7 @@ export function HowSteps({ steps }: { steps: Step[] }) {
         ))}
       </div>
 
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-6 sm:gap-10 lg:grid-cols-4">
         {steps.map((step, i) => (
           <div
             key={step.number}
@@ -95,15 +95,15 @@ export function HowSteps({ steps }: { steps: Step[] }) {
               } as React.CSSProperties
             }
           >
-            <span className="dd-step-num font-[family-name:var(--font-oswald)] text-6xl font-bold text-white/10">
+            <span className="dd-step-num font-[family-name:var(--font-oswald)] text-4xl font-bold text-white/10 sm:text-6xl">
               {step.number}
             </span>
             <div className="dd-step-rest">
               <div className="mt-3 h-0.5 w-10 bg-primary" />
-              <h3 className="mt-4 font-[family-name:var(--font-oswald)] text-xl font-bold uppercase tracking-tight text-white">
+              <h3 className="mt-3 font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-tight text-white sm:mt-4 sm:text-xl">
                 {step.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">{step.description}</p>
+              <p className="mt-2 hidden text-sm leading-relaxed text-white/55 sm:block">{step.description}</p>
             </div>
           </div>
         ))}
