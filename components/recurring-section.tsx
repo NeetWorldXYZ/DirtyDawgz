@@ -49,9 +49,9 @@ export function RecurringSection() {
         <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-6">
           {portalFeatures.map((feature, i) => (
             <Reveal key={feature.title} delay={(i % 2) * 110}>
-              <div className="flex h-full flex-col gap-3 border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 sm:flex-row sm:gap-5 sm:p-7">
-                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-primary/25 bg-primary/10 sm:h-12 sm:w-12">
-                  <feature.icon className="h-4 w-4 text-primary sm:h-6 sm:w-6" />
+              <div className="flex h-full min-h-28 flex-col items-center justify-center gap-2.5 border border-border bg-card p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 sm:min-h-0 sm:flex-row sm:items-start sm:justify-start sm:gap-5 sm:p-7 sm:text-left">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center border border-primary/25 bg-primary/10 sm:h-12 sm:w-12">
+                  <feature.icon className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
                 </div>
                 <div>
                   <h3 className="font-[family-name:var(--font-oswald)] text-xs font-bold uppercase tracking-tight text-card-foreground sm:text-lg">

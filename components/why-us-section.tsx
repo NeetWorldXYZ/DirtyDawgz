@@ -75,10 +75,10 @@ export function WhyUsSection() {
             <Reveal
               key={reason.title}
               delay={(i % 4) * 90}
-              className="group flex h-full flex-col bg-card p-4 transition-colors duration-300 hover:bg-[#161616] sm:p-7"
+              className="group flex h-full min-h-28 flex-col items-center justify-center bg-card p-4 text-center transition-colors duration-300 hover:bg-[#161616] sm:min-h-0 sm:items-start sm:justify-start sm:p-7 sm:text-left"
             >
-              <div className="mb-3 flex h-9 w-9 items-center justify-center border border-primary/25 bg-primary/10 sm:mb-4 sm:h-11 sm:w-11">
-                <reason.icon className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
+              <div className="mb-2.5 flex h-10 w-10 items-center justify-center border border-primary/25 bg-primary/10 sm:mb-4 sm:h-11 sm:w-11">
+                <reason.icon className="h-5 w-5 text-primary" />
               </div>
               <h3 className="font-[family-name:var(--font-oswald)] text-xs font-bold uppercase tracking-tight text-card-foreground transition-colors duration-300 group-hover:text-white sm:text-base">
                 {reason.title}
