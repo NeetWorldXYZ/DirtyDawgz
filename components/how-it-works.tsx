@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react"
 import { Reveal } from "@/components/motion"
-import { PawTrail } from "@/components/paw-trail"
+import { HowSteps } from "@/components/how-steps"
 
 const steps = [
   {
@@ -38,22 +38,7 @@ export function HowItWorks() {
           </h2>
         </Reveal>
 
-        <PawTrail />
-
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <Reveal key={step.number} delay={i * 130} className="relative">
-              <span className="font-[family-name:var(--font-oswald)] text-6xl font-bold text-white/10">
-                {step.number}
-              </span>
-              <div className="mt-3 h-0.5 w-10 bg-primary" />
-              <h3 className="mt-4 font-[family-name:var(--font-oswald)] text-xl font-bold uppercase tracking-tight text-white">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">{step.description}</p>
-            </Reveal>
-          ))}
-        </div>
+        <HowSteps steps={steps} />
 
         <Reveal delay={200} className="mt-14">
           <a

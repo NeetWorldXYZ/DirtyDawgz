@@ -53,18 +53,27 @@ export function HeroAmbient() {
         className="absolute bottom-[-20%] left-[-10%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,_rgba(180,190,200,0.08)_0%,_transparent_65%)] transition-transform duration-700 ease-out"
       />
 
-      {/* Steam wisps rising behind the headline */}
+      {/* Steam wisps rising behind the headline — negative delays keep the
+          column full from the first frame instead of starting empty */}
       <div
-        className="dd-steam absolute bottom-0 left-[12%] h-72 w-16 rounded-full bg-white blur-2xl"
-        style={{ "--steam-max": 0.045, "--steam-dur": "16s", "--steam-delay": "0s" } as React.CSSProperties}
+        className="dd-steam absolute bottom-0 left-[10%] h-80 w-20 rounded-full bg-white blur-2xl"
+        style={{ "--steam-max": 0.11, "--steam-dur": "15s", "--steam-delay": "0s" } as React.CSSProperties}
       />
       <div
-        className="dd-steam absolute bottom-0 left-[38%] h-80 w-20 rounded-full bg-white blur-3xl"
-        style={{ "--steam-max": 0.035, "--steam-dur": "20s", "--steam-delay": "-7s" } as React.CSSProperties}
+        className="dd-steam absolute bottom-0 left-[16%] h-64 w-12 rounded-full bg-white blur-xl"
+        style={{ "--steam-max": 0.08, "--steam-dur": "11s", "--steam-delay": "-6s" } as React.CSSProperties}
       />
       <div
-        className="dd-steam absolute bottom-0 left-[62%] h-64 w-14 rounded-full bg-white blur-2xl"
-        style={{ "--steam-max": 0.04, "--steam-dur": "13s", "--steam-delay": "-3s" } as React.CSSProperties}
+        className="dd-steam absolute bottom-0 left-[40%] h-96 w-24 rounded-full bg-white blur-3xl"
+        style={{ "--steam-max": 0.09, "--steam-dur": "19s", "--steam-delay": "-9s" } as React.CSSProperties}
+      />
+      <div
+        className="dd-steam absolute bottom-0 left-[58%] h-72 w-16 rounded-full bg-white blur-2xl"
+        style={{ "--steam-max": 0.1, "--steam-dur": "13s", "--steam-delay": "-3s" } as React.CSSProperties}
+      />
+      <div
+        className="dd-steam absolute bottom-0 left-[82%] h-64 w-14 rounded-full bg-white blur-xl"
+        style={{ "--steam-max": 0.07, "--steam-dur": "17s", "--steam-delay": "-12s" } as React.CSSProperties}
       />
     </div>
   )
