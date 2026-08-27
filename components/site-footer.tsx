@@ -12,7 +12,7 @@ export function SiteFooter() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/logo.png"
+                src="/images/logo-badge.png"
                 alt="Dirty Dawgz Oven Cleaning LLC logo"
                 width={64}
                 height={64}

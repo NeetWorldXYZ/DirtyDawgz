@@ -310,6 +310,39 @@ section[id] {
   transform: none;
 }
 
+/* ---- Hero emblem: slow ring rotation + gentle float ---- */
+@keyframes dd-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.dd-spin-slow {
+  animation: dd-spin 70s linear infinite;
+}
+.dd-spin-rev {
+  animation: dd-spin 50s linear infinite reverse;
+}
+@keyframes dd-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.dd-float {
+  animation: dd-float 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dd-spin-slow,
+  .dd-spin-rev,
+  .dd-float {
+    animation: none;
+  }
+}
+
 /* ---- Rising steam wisps in the hero ---- */
 @keyframes dd-steam {
   0% {

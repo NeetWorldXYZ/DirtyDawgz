@@ -38,7 +38,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-badge.png"
             alt="Dirty Dawgz Oven Cleaning LLC logo"
             width={56}
             height={56}

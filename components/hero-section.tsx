@@ -75,14 +75,43 @@ export function HeroSection() {
           className="dd-hero-enter hidden flex-shrink-0 items-center justify-center lg:flex"
           style={{ animationDelay: "0.35s" }}
         >
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-full bg-primary/15 blur-3xl" />
+          {/* Emblem treatment: fixed square stage so every ring stays circular */}
+          <div className="dd-float relative flex h-[30rem] w-[30rem] items-center justify-center xl:h-[34rem] xl:w-[34rem]">
+            {/* Glow bed */}
+            <div className="dd-ember absolute inset-10 rounded-full bg-[radial-gradient(circle,_rgba(196,30,42,0.35)_0%,_transparent_70%)] blur-2xl" />
+
+            {/* Outer tick ring, rotating slowly like a gauge bezel */}
+            <svg viewBox="0 0 100 100" className="dd-spin-slow absolute inset-0 h-full w-full" aria-hidden>
+              <circle
+                cx="50"
+                cy="50"
+                r="48.5"
+                fill="none"
+                stroke="rgba(255,255,255,0.18)"
+                strokeWidth="0.7"
+                strokeDasharray="0.7 5.2"
+              />
+            </svg>
+
+            {/* Inner dashed ring, counter-rotating */}
+            <svg viewBox="0 0 100 100" className="dd-spin-rev absolute inset-7 h-auto w-auto" aria-hidden>
+              <circle
+                cx="50"
+                cy="50"
+                r="48"
+                fill="none"
+                stroke="rgba(196,30,42,0.45)"
+                strokeWidth="0.5"
+                strokeDasharray="10 6"
+              />
+            </svg>
+
             <Image
-              src="/images/logo.png"
+              src="/images/logo-badge.png"
               alt="Dirty Dawgz Oven Cleaning LLC mascot"
-              width={380}
-              height={380}
-              className="relative rounded-full"
+              width={430}
+              height={430}
+              className="relative w-[21.5rem] rounded-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)] xl:w-[24.5rem]"
               priority
             />
           </div>
