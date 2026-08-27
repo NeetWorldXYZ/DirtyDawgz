@@ -76,10 +76,10 @@ export function ServicesSection() {
             <Reveal key={service.title} delay={i * 120} className="h-full">
               <Link
                 href={service.href}
-                className="group flex h-full flex-col border border-border bg-[#161616] p-6 sm:p-8 text-secondary-foreground transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/10"
+                className="group flex h-full flex-col items-center border border-border bg-[#161616] p-6 text-center text-secondary-foreground transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/10 sm:items-stretch sm:p-8 sm:text-left"
               >
-                <div className="flex items-start justify-between">
-                  <span className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-white/10 transition-colors duration-300 group-hover:text-primary/40">
+                <div className="flex w-full items-start justify-center sm:justify-between">
+                  <span className="hidden font-[family-name:var(--font-oswald)] text-5xl font-bold text-white/10 transition-colors duration-300 group-hover:text-primary/40 sm:inline">
                     {service.number}
                   </span>
                   <div className="flex h-12 w-12 items-center justify-center border border-primary/30 bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
@@ -87,7 +87,7 @@ export function ServicesSection() {
                   </div>
                 </div>
 
-                <h3 className="mt-6 font-[family-name:var(--font-oswald)] text-2xl font-bold uppercase leading-tight tracking-tight text-white">
+                <h3 className="mt-5 font-[family-name:var(--font-oswald)] text-xl font-bold uppercase leading-tight tracking-tight text-white sm:mt-6 sm:text-2xl">
                   {service.title}
                 </h3>
                 <p className="mt-1 font-[family-name:var(--font-oswald)] text-xs font-semibold uppercase tracking-[0.2em] text-primary">
