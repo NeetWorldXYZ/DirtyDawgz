@@ -7,7 +7,7 @@ export function ServiceAreaSection() {
   return (
     <section
       id="service-area"
-      className="dd-stripes border-y border-white/10 bg-[#0e0e0e] py-20 text-secondary-foreground lg:py-28"
+      className="dd-stripes border-y border-white/10 bg-[#0e0e0e] py-12 text-secondary-foreground sm:py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">

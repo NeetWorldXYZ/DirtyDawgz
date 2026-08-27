@@ -6,7 +6,7 @@ import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/site"
 
 export function CtaBanner() {
   return (
-    <section className="relative overflow-hidden bg-primary py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-primary py-12 sm:py-20 lg:py-24">
       <div className="dd-stripes absolute inset-0 opacity-60" />
       <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
       <Reveal className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center lg:px-8">

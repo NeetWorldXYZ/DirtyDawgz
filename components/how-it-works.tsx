@@ -27,9 +27,9 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="border-y border-white/10 bg-[#0e0e0e] py-20 text-secondary-foreground lg:py-28">
+    <section className="border-y border-white/10 bg-[#0e0e0e] py-12 text-secondary-foreground sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <Reveal className="mb-14 max-w-3xl">
+        <Reveal className="mb-9 max-w-3xl sm:mb-14">
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             How It Works
           </p>

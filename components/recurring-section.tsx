@@ -28,7 +28,7 @@ const portalFeatures = [
 
 export function RecurringSection() {
   return (
-    <section className="bg-muted py-20 lg:py-28">
+    <section className="bg-muted py-12 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <Reveal className="max-w-3xl">
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
@@ -46,10 +46,10 @@ export function RecurringSection() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-6">
           {portalFeatures.map((feature, i) => (
             <Reveal key={feature.title} delay={(i % 2) * 110}>
-              <div className="flex h-full gap-5 border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
+              <div className="flex h-full gap-4 border border-border bg-card p-4 sm:gap-5 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center border border-primary/25 bg-primary/10">
                   <feature.icon className="h-6 w-6 text-primary" />
                 </div>

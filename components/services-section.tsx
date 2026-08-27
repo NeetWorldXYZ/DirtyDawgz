@@ -55,9 +55,9 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="bg-background py-20 lg:py-28">
+    <section id="services" className="bg-background py-12 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <Reveal className="mb-16 max-w-3xl">
+        <Reveal className="mb-10 max-w-3xl sm:mb-16">
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             What We Do
           </p>
@@ -76,7 +76,7 @@ export function ServicesSection() {
             <Reveal key={service.title} delay={i * 120} className="h-full">
               <Link
                 href={service.href}
-                className="group flex h-full flex-col border border-border bg-[#161616] p-8 text-secondary-foreground transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/10"
+                className="group flex h-full flex-col border border-border bg-[#161616] p-6 sm:p-8 text-secondary-foreground transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/10"
               >
                 <div className="flex items-start justify-between">
                   <span className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-white/10 transition-colors duration-300 group-hover:text-primary/40">
@@ -97,7 +97,7 @@ export function ServicesSection() {
                   {service.description}
                 </p>
 
-                <ul className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5">
+                <ul className="mt-6 hidden flex-col gap-2 border-t border-white/10 pt-5 sm:flex">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-sm text-white/80">
                       <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rotate-45 bg-primary" />

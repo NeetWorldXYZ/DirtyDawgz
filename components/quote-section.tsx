@@ -3,9 +3,9 @@ import { QuoteForm } from "@/components/quote-form"
 
 export function QuoteSection() {
   return (
-    <section id="quote" className="bg-background py-20 lg:py-28">
+    <section id="quote" className="bg-background py-12 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-8 max-w-3xl sm:mb-12">
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             Get Started
           </p>
@@ -58,7 +58,7 @@ export function QuoteSection() {
               </div>
             </div>
 
-            <div className="border border-border bg-secondary p-6 text-secondary-foreground">
+            <div className="hidden border border-border bg-secondary p-6 text-secondary-foreground lg:block">
               <h3 className="mb-3 font-[family-name:var(--font-oswald)] text-lg font-bold uppercase tracking-tight text-primary-foreground">
                 Why Request a Quote?
               </h3>

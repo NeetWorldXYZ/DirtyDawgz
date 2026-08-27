@@ -54,9 +54,9 @@ const reasons = [
 
 export function WhyUsSection() {
   return (
-    <section id="why-us" className="bg-background py-20 lg:py-28">
+    <section id="why-us" className="bg-background py-12 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <Reveal className="mb-16 max-w-3xl">
+        <Reveal className="mb-10 max-w-3xl sm:mb-16">
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             Why Dirty Dawgz
           </p>
@@ -70,20 +70,21 @@ export function WhyUsSection() {
           </p>
         </Reveal>
 
-        <div className="grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-px overflow-hidden border border-border bg-border lg:grid-cols-4">
           {reasons.map((reason, i) => (
             <Reveal
               key={reason.title}
               delay={(i % 4) * 90}
-              className="group flex h-full flex-col bg-card p-7 transition-colors duration-300 hover:bg-[#161616]"
+              className="group flex h-full flex-col bg-card p-4 transition-colors duration-300 hover:bg-[#161616] sm:p-7"
             >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center border border-primary/25 bg-primary/10">
-                <reason.icon className="h-5 w-5 text-primary" />
+              <div className="mb-3 flex h-9 w-9 items-center justify-center border border-primary/25 bg-primary/10 sm:mb-4 sm:h-11 sm:w-11">
+                <reason.icon className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
               </div>
-              <h3 className="font-[family-name:var(--font-oswald)] text-base font-bold uppercase tracking-tight text-card-foreground transition-colors duration-300 group-hover:text-white">
+              <h3 className="font-[family-name:var(--font-oswald)] text-xs font-bold uppercase tracking-tight text-card-foreground transition-colors duration-300 group-hover:text-white sm:text-base">
                 {reason.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-white/60">
+              {/* Full explanations are a desktop luxury; on phones the titles carry it */}
+              <p className="mt-2 hidden text-sm leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-white/60 sm:block">
                 {reason.description}
               </p>
             </Reveal>

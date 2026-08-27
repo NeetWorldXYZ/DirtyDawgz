@@ -17,9 +17,9 @@ export function ProofSection() {
   const pair = PROOF_PAIRS[active]
 
   return (
-    <section id="proof" className="dd-stripes bg-[#141414] py-20 text-secondary-foreground lg:py-28">
+    <section id="proof" className="dd-stripes bg-[#141414] py-12 text-secondary-foreground sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <Reveal className="mb-12 max-w-3xl">
+        <Reveal className="mb-8 max-w-3xl sm:mb-12">
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             The Proof
           </p>
