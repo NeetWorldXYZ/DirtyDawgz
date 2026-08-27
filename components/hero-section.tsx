@@ -35,10 +35,14 @@ export function HeroSection() {
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center gap-10 px-4 py-16 text-center lg:flex-row lg:gap-16 lg:px-8 lg:text-left">
         <div className="flex max-w-3xl flex-1 flex-col items-center lg:items-start">
           <p
-            className="dd-hero-enter mb-5 inline-flex items-center gap-2 border border-primary/40 bg-primary/10 px-4 py-1.5 font-[family-name:var(--font-oswald)] text-xs font-semibold uppercase tracking-[0.25em] text-primary"
+            className="dd-hero-enter dd-open-badge mb-5 inline-flex items-center gap-2.5 border border-emerald-400/50 bg-emerald-400/10 px-4 py-2 font-[family-name:var(--font-oswald)] text-xs font-bold uppercase tracking-[0.25em] text-emerald-300 sm:text-sm"
             style={{ animationDelay: "0.05s" }}
           >
-            <span className="h-1.5 w-1.5 bg-primary" />
+            {/* Live status dot, like the OPEN sign in a shop window */}
+            <span className="relative flex h-2.5 w-2.5 flex-shrink-0 items-center justify-center">
+              <span className="dd-live-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400" />
+              <span className="dd-live-dot relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+            </span>
             Serving All of Michigan
           </p>
 

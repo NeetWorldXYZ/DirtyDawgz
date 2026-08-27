@@ -451,3 +451,59 @@ section[id] {
     display: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * "Open sign" availability badge: neon-green glow with a live status dot
+ * ------------------------------------------------------------------------- */
+
+@keyframes dd-live-ping {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes dd-neon-breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(52, 211, 153, 0.18),
+      inset 0 0 12px rgba(52, 211, 153, 0.06);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(52, 211, 153, 0.34),
+      inset 0 0 16px rgba(52, 211, 153, 0.1);
+  }
+}
+
+/* Runs alongside the hero fade-up: a lone `animation` here would replace it
+   and leave the badge stuck at opacity 0. */
+.dd-open-badge {
+  animation:
+    dd-fade-up 0.9s ease-out forwards,
+    dd-neon-breathe 3.4s ease-in-out infinite;
+}
+
+.dd-live-dot {
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
+}
+
+.dd-live-ping {
+  animation: dd-live-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dd-open-badge,
+  .dd-live-ping {
+    animation: none;
+  }
+  .dd-live-ping {
+    opacity: 0;
+  }
+}
