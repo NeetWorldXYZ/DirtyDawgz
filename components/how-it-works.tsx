@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react"
 import { Reveal } from "@/components/motion"
+import { PawTrail } from "@/components/paw-trail"
 
 const steps = [
   {
@@ -36,6 +37,8 @@ export function HowItWorks() {
             Hiring the Dawgz Is <span className="text-primary">the Easy Part.</span>
           </h2>
         </Reveal>
+
+        <PawTrail />
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (

@@ -2,14 +2,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { Phone, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { HeroAmbient } from "@/components/hero-ambient"
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/site"
 
 export function HeroSection() {
   return (
     <section className="dd-stripes relative flex min-h-[calc(100svh-77px)] flex-col overflow-hidden bg-[#141414] text-secondary-foreground">
-      {/* Ambient light: red ember glow + cool stainless wash */}
-      <div className="dd-ember absolute -top-32 right-[-10%] h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,_rgba(196,30,42,0.22)_0%,_transparent_65%)]" />
-      <div className="absolute bottom-[-20%] left-[-10%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,_rgba(180,190,200,0.08)_0%,_transparent_65%)]" />
+      {/* Ambient light, steam, and mouse parallax */}
+      <HeroAmbient />
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center gap-10 px-4 py-16 text-center lg:flex-row lg:gap-16 lg:px-8 lg:text-left">
         <div className="flex max-w-3xl flex-1 flex-col items-center lg:items-start">
