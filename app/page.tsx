@@ -2,7 +2,6 @@ import { SiteHeader } from "@/components/site-header"
 import { HeroSection } from "@/components/hero-section"
 import { TrustTicker } from "@/components/trust-ticker"
 import { ServicesSection } from "@/components/services-section"
-import { ProofSection } from "@/components/proof-section"
 import { WhyUsSection } from "@/components/why-us-section"
 import { HowItWorks } from "@/components/how-it-works"
 import { RecurringSection } from "@/components/recurring-section"
@@ -20,7 +19,8 @@ export default function Home() {
       <HeroSection />
       <TrustTicker />
       <ServicesSection />
-      <ProofSection />
+      {/* ProofSection (before/after slider) is parked until real job photos
+          land in lib/site.ts — re-add it here to bring the section back. */}
       <WhyUsSection />
       <HowItWorks />
       <RecurringSection />
