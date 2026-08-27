@@ -507,3 +507,95 @@ section[id] {
     opacity: 0;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Hero emblem: heat radiating off the badge + embers rising from the burner
+ * ------------------------------------------------------------------------- */
+
+/* Heat pulses: rings that swell outward and dissipate, like heat off a hot
+   oven door. Staggered so a new pulse leaves as the last one fades. */
+@keyframes dd-heat-ring {
+  0% {
+    transform: scale(0.82);
+    opacity: 0;
+  }
+  15% {
+    opacity: var(--ring-max, 0.5);
+  }
+  100% {
+    transform: scale(1.32);
+    opacity: 0;
+  }
+}
+.dd-heat-ring {
+  animation: dd-heat-ring var(--ring-dur, 5s) cubic-bezier(0.25, 0.6, 0.35, 1) infinite;
+  animation-delay: var(--ring-delay, 0s);
+}
+
+/* Embers drifting up off the badge, flickering as they cool and die out. */
+@keyframes dd-ember-rise {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--ember-max, 0.85);
+  }
+  45% {
+    transform: translate(var(--ember-drift, 10px), -45%) scale(1);
+    opacity: calc(var(--ember-max, 0.85) * 0.75);
+  }
+  75% {
+    opacity: calc(var(--ember-max, 0.85) * 0.35);
+  }
+  100% {
+    transform: translate(calc(var(--ember-drift, 10px) * -1.4), -105%) scale(0.35);
+    opacity: 0;
+  }
+}
+.dd-ember-particle {
+  animation: dd-ember-rise var(--ember-dur, 7s) linear infinite;
+  animation-delay: var(--ember-delay, 0s);
+}
+
+/* Firelight: the glow bed breathes unevenly, the way a burner flickers. */
+@keyframes dd-firelight {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  22% {
+    opacity: 0.82;
+    transform: scale(1.05);
+  }
+  41% {
+    opacity: 0.62;
+    transform: scale(1.01);
+  }
+  63% {
+    opacity: 0.95;
+    transform: scale(1.08);
+  }
+  81% {
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+}
+.dd-firelight {
+  animation: dd-firelight 6.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dd-heat-ring,
+  .dd-ember-particle,
+  .dd-firelight {
+    animation: none;
+  }
+  .dd-ember-particle {
+    opacity: 0;
+  }
+  .dd-heat-ring {
+    opacity: 0.25;
+  }
+}

@@ -26,6 +26,28 @@ const sparkles = [
   { pos: "left-[30%] top-[8%]", size: "h-4 w-4", color: "text-white/90", dur: "8.5s", delay: "6.4s" },
 ]
 
+/* Heat pulses radiating off the badge, staggered so one is always leaving. */
+const heatRings = [
+  { dur: "4.5s", delay: "0s", max: 0.85 },
+  { dur: "4.5s", delay: "1.5s", max: 0.6 },
+  { dur: "4.5s", delay: "3s", max: 0.4 },
+]
+
+/* Embers rising off the badge: position, size, drift, speed, brightness. */
+const embers = [
+  { pos: "left-[24%] bottom-[6%]", size: "h-2 w-2", drift: "20px", dur: "6.5s", delay: "0s", max: 1, hot: true },
+  { pos: "left-[36%] bottom-[2%]", size: "h-1.5 w-1.5", drift: "-16px", dur: "8s", delay: "1.1s", max: 0.85, hot: false },
+  { pos: "left-[46%] bottom-[8%]", size: "h-1 w-1", drift: "12px", dur: "9s", delay: "2.6s", max: 0.7, hot: false },
+  { pos: "left-[55%] bottom-[3%]", size: "h-2 w-2", drift: "24px", dur: "7s", delay: "3.4s", max: 1, hot: true },
+  { pos: "left-[66%] bottom-[7%]", size: "h-1.5 w-1.5", drift: "-18px", dur: "8.5s", delay: "0.6s", max: 0.9, hot: true },
+  { pos: "left-[74%] bottom-[12%]", size: "h-1 w-1", drift: "14px", dur: "10s", delay: "4.2s", max: 0.65, hot: false },
+  { pos: "left-[30%] bottom-[14%]", size: "h-1.5 w-1.5", drift: "-12px", dur: "7.5s", delay: "5.1s", max: 0.8, hot: false },
+  { pos: "left-[60%] bottom-[16%]", size: "h-1 w-1", drift: "18px", dur: "9.5s", delay: "6.3s", max: 0.7, hot: true },
+  { pos: "left-[41%] bottom-[11%]", size: "h-1.5 w-1.5", drift: "-22px", dur: "8.2s", delay: "2.1s", max: 0.85, hot: true },
+  { pos: "left-[70%] bottom-[4%]", size: "h-1 w-1", drift: "10px", dur: "11s", delay: "5.8s", max: 0.6, hot: false },
+  { pos: "left-[19%] bottom-[13%]", size: "h-1 w-1", drift: "16px", dur: "9.8s", delay: "7.4s", max: 0.7, hot: false },
+]
+
 export function HeroSection() {
   return (
     <section className="dd-stripes relative flex min-h-[calc(100svh-77px)] flex-col overflow-hidden bg-[#141414] text-secondary-foreground">
@@ -102,34 +124,27 @@ export function HeroSection() {
         >
           {/* Emblem treatment: fixed square stage so every ring stays circular */}
           <div className="dd-float relative flex h-[30rem] w-[30rem] items-center justify-center xl:h-[34rem] xl:w-[34rem]">
-            {/* Glow bed */}
-            <div className="dd-ember absolute inset-10 rounded-full bg-[radial-gradient(circle,_rgba(196,30,42,0.35)_0%,_transparent_70%)] blur-2xl" />
+            {/* Burner glow, flickering like firelight */}
+            <div className="dd-firelight absolute inset-10 rounded-full bg-[radial-gradient(circle,_rgba(214,74,32,0.45)_0%,_rgba(196,30,42,0.24)_45%,_transparent_72%)] blur-2xl" />
 
-            {/* Outer tick ring, rotating slowly like a gauge bezel */}
-            <svg viewBox="0 0 100 100" className="dd-spin-slow absolute inset-0 h-full w-full" aria-hidden>
-              <circle
-                cx="50"
-                cy="50"
-                r="48.5"
-                fill="none"
-                stroke="rgba(255,255,255,0.18)"
-                strokeWidth="0.7"
-                strokeDasharray="0.7 5.2"
-              />
-            </svg>
+            {/* Heat pooling under the badge, as if it is sitting over a burner */}
+            <div className="dd-firelight absolute bottom-[12%] left-1/2 h-40 w-[70%] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse,_rgba(255,146,60,0.4)_0%,_rgba(214,74,32,0.18)_45%,_transparent_75%)] blur-2xl" />
 
-            {/* Inner dashed ring, counter-rotating */}
-            <svg viewBox="0 0 100 100" className="dd-spin-rev absolute inset-7 h-auto w-auto" aria-hidden>
-              <circle
-                cx="50"
-                cy="50"
-                r="48"
-                fill="none"
-                stroke="rgba(196,30,42,0.45)"
-                strokeWidth="0.5"
-                strokeDasharray="10 6"
+            {/* Heat radiating off the badge */}
+            {heatRings.map((r, i) => (
+              <div
+                key={i}
+                aria-hidden
+                className="dd-heat-ring absolute inset-6 rounded-full border border-[rgba(240,138,66,0.75)]"
+                style={
+                  {
+                    "--ring-dur": r.dur,
+                    "--ring-delay": r.delay,
+                    "--ring-max": r.max,
+                  } as React.CSSProperties
+                }
               />
-            </svg>
+            ))}
 
             <Image
               src="/images/logo-badge.png"
@@ -146,6 +161,25 @@ export function HeroSection() {
                 key={i}
                 className={`dd-sparkle absolute ${s.pos} ${s.size} ${s.color}`}
                 style={{ "--sparkle-dur": s.dur, "--sparkle-delay": s.delay } as React.CSSProperties}
+              />
+            ))}
+
+            {/* Embers drifting up off the badge */}
+            {embers.map((e, i) => (
+              <span
+                key={i}
+                aria-hidden
+                className={`dd-ember-particle absolute ${e.pos} ${e.size} rounded-full ${
+                  e.hot ? "bg-[#ffb45c]" : "bg-[#e2743a]"
+                } shadow-[0_0_6px_rgba(255,150,70,0.9)]`}
+                style={
+                  {
+                    "--ember-drift": e.drift,
+                    "--ember-dur": e.dur,
+                    "--ember-delay": e.delay,
+                    "--ember-max": e.max,
+                  } as React.CSSProperties
+                }
               />
             ))}
           </div>
