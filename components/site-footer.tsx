@@ -28,7 +28,7 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-secondary-foreground/60">
-              Michigan&apos;s commercial kitchen cleaning specialists — commercial oven cleaning,
+              Michigan&apos;s commercial kitchen cleaning specialists: commercial oven cleaning,
               hood &amp; exhaust system cleaning, and grease trap service. Got a dirty kitchen?
               Send in the Dawgz.
             </p>

@@ -6,13 +6,13 @@ const reasons = [
     icon: Flame,
     title: "Commercial Kitchen Specialists",
     description:
-      "We don't clean offices or carpets. Ovens, hood systems, and grease traps are the whole job — and we're built for them.",
+      "We don't clean offices or carpets. Ovens, hood systems, and grease traps are the whole job, and we're built for them.",
   },
   {
     icon: Wrench,
     title: "Professional Equipment",
     description:
-      "Commercial-grade degreasers, pressure equipment, and tools made for baked-on carbon — not a mop bucket and a prayer.",
+      "Commercial-grade degreasers, pressure equipment, and tools made for baked-on carbon, not a mop bucket and a prayer.",
   },
   {
     icon: Wind,
@@ -24,7 +24,7 @@ const reasons = [
     icon: Camera,
     title: "Before & After Documentation",
     description:
-      "Every job is photographed before and after, so you — and your insurance company — can see exactly what was done.",
+      "Every job is photographed before and after, so you and your insurance company can see exactly what was done.",
   },
   {
     icon: FileText,
@@ -42,13 +42,13 @@ const reasons = [
     icon: CalendarClock,
     title: "Flexible Scheduling",
     description:
-      "Nights, weekends, off-hours — we work around your service windows so your kitchen never loses production time.",
+      "Nights, weekends, off-hours. We work around your service windows so your kitchen never loses production time.",
   },
   {
     icon: MapPin,
     title: "Michigan-Based Crews",
     description:
-      "Locally owned and operated. When you call, you talk to the crew that shows up — not a national call center.",
+      "Locally owned and operated. When you call, you talk to the crew that shows up, not a national call center.",
   },
 ]
 
@@ -65,7 +65,7 @@ export function WhyUsSection() {
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Dirty Dawgz specializes in the difficult, greasy equipment inside commercial
-            kitchens — the work most cleaning companies won&apos;t touch. That focus shows in
+            kitchens, the work most cleaning companies won&apos;t touch. That focus shows in
             the results.
           </p>
         </Reveal>

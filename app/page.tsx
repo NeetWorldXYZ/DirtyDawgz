@@ -20,7 +20,7 @@ export default function Home() {
       <TrustTicker />
       <ServicesSection />
       {/* ProofSection (before/after slider) is parked until real job photos
-          land in lib/site.ts — re-add it here to bring the section back. */}
+          land in lib/site.ts - re-add it here to bring the section back. */}
       <WhyUsSection />
       <HowItWorks />
       <RecurringSection />

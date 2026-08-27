@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react"
 /**
  * The hero's ambient layer: the red ember glow and stainless wash (now with
  * a gentle mouse parallax on desktop) plus a few whisper-faint steam wisps
- * rising behind the headline — end-of-shift kitchen, not smoke.
+ * rising behind the headline - end-of-shift kitchen, not smoke.
  *
  * Pointer-events: none throughout; purely decorative. The parallax listens
  * only on devices with a hover pointer and skips entirely under
@@ -53,7 +53,7 @@ export function HeroAmbient() {
         className="absolute bottom-[-20%] left-[-10%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,_rgba(180,190,200,0.08)_0%,_transparent_65%)] transition-transform duration-700 ease-out"
       />
 
-      {/* Steam wisps rising behind the headline — negative delays keep the
+      {/* Steam wisps rising behind the headline - negative delays keep the
           column full from the first frame instead of starting empty */}
       <div
         className="dd-steam absolute bottom-0 left-[10%] h-80 w-20 rounded-full bg-white blur-2xl"

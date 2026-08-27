@@ -27,8 +27,8 @@ export function ProofSection() {
             We Clean the Stuff <span className="text-primary">Nobody Else Wants To.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/60">
-            Every Dirty Dawgz job is photo-documented, before and after. Drag the slider —
-            this is the difference we deliver on ovens, hood systems, and grease traps across
+            Every Dirty Dawgz job is photo-documented, before and after. Drag the slider to see
+            the difference we deliver on ovens, hood systems, and grease traps across
             Michigan.
           </p>
         </Reveal>
@@ -55,7 +55,7 @@ export function ProofSection() {
           <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
               {pair.label}
-              {pair.location ? <span className="text-white/50"> — {pair.location}</span> : null}
+              {pair.location ? <span className="text-white/50">, {pair.location}</span> : null}
             </p>
             <p className="flex items-center gap-2 text-sm text-white/50">
               <Camera className="h-4 w-4 text-primary" />

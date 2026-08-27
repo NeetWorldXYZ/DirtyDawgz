@@ -5,7 +5,7 @@ import { ServicePageLayout } from "@/components/service-page-layout"
 export const metadata: Metadata = {
   title: "Commercial Hood Cleaning Michigan | NFPA 96 Kitchen Exhaust Cleaning | Dirty Dawgz",
   description:
-    "Professional commercial hood cleaning in Michigan. NFPA 96 compliant restaurant hood and kitchen exhaust system cleaning — hoods, filters, ductwork, and rooftop fans — with before & after documentation and a certificate of service.",
+    "Professional commercial hood cleaning in Michigan. NFPA 96 compliant restaurant hood and kitchen exhaust system cleaning for hoods, filters, ductwork, and rooftop fans, with before & after documentation and a certificate of service.",
   keywords: [
     "commercial hood cleaning Michigan",
     "restaurant hood cleaning Michigan",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Commercial Hood Cleaning Michigan | Dirty Dawgz",
     description:
-      "NFPA 96 compliant restaurant hood and kitchen exhaust cleaning across Michigan — hoods, filters, ductwork, and rooftop fans, fully documented.",
+      "NFPA 96 compliant restaurant hood and kitchen exhaust cleaning across Michigan for hoods, filters, ductwork, and rooftop fans, fully documented.",
     url: "/hoodcleaning",
     type: "website",
   },

@@ -30,7 +30,7 @@ export function Reveal({ children, className, delay = 0, from = "bottom", as: Ta
     if (typeof IntersectionObserver === "undefined") return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
-    // Only animate elements that start below the viewport — everything else
+    // Only animate elements that start below the viewport - everything else
     // stays visible, so there is no flash and nothing above the fold moves.
     const rect = node.getBoundingClientRect()
     if (rect.top < window.innerHeight - 40) return

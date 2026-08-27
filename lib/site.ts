@@ -4,7 +4,7 @@ export const EMAIL = "info@dirtydawgzovencleaning.com"
 export const FACEBOOK_URL =
   "https://www.facebook.com/people/Dirty-Dawgz-Oven-Cleaning-LLC/61586346754471/"
 
-/** Customer portal front door — passwordless login by billing email. */
+/** Customer portal front door - passwordless login by billing email. */
 export const PORTAL_URL = "https://app.dirtydawgzovencleaning.com/portal"
 
 export interface BeforeAfterPair {
@@ -17,7 +17,7 @@ export interface BeforeAfterPair {
 
 /**
  * Before/after documentation shown in the proof slider on the homepage.
- * Drop real photo pairs into /public/images/work/ and reference them here —
+ * Drop real photo pairs into /public/images/work/ and reference them here -
  * the slider automatically uses photos when `before`/`after` are set and
  * falls back to the stylized grime/steel treatment when they are not.
  */
@@ -44,7 +44,7 @@ export interface CustomerReview {
 
 /**
  * Real customer reviews, hand-copied from Facebook (and later Google).
- * Leave empty until real reviews are pasted in — the reviews section
+ * Leave empty until real reviews are pasted in - the reviews section
  * renders a "read our reviews" band instead of fake testimonials.
  * Never put invented reviews here.
  */

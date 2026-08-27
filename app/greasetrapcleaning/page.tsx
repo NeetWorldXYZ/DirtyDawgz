@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Grease Trap Cleaning Michigan | Dirty Dawgz",
     description:
-      "Commercial grease trap cleaning for Michigan restaurants — full pump-outs, scraping, compliant disposal, and written service records.",
+      "Commercial grease trap cleaning for Michigan restaurants, including full pump-outs, scraping, compliant disposal, and written service records.",
     url: "/greasetrapcleaning",
     type: "website",
   },

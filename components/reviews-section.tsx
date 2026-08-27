@@ -17,7 +17,7 @@ function Stars({ rating }: { rating: number }) {
 
 /**
  * Renders nothing until real reviews are added to CUSTOMER_REVIEWS in
- * lib/site.ts — the section appears automatically once they're in.
+ * lib/site.ts - the section appears automatically once they're in.
  */
 export function ReviewsSection() {
   if (CUSTOMER_REVIEWS.length === 0) return null
@@ -45,7 +45,7 @@ export function ReviewsSection() {
                 <p className="mt-5 font-[family-name:var(--font-oswald)] text-sm font-bold uppercase tracking-wider text-white">
                   {review.author}
                   {review.city ? (
-                    <span className="font-normal text-white/50"> — {review.city}</span>
+                    <span className="font-normal text-white/50">, {review.city}</span>
                   ) : null}
                 </p>
                 <p className="mt-1 text-xs text-white/40">Review from {review.source}</p>

@@ -12,7 +12,7 @@ const portalFeatures = [
   {
     icon: Camera,
     title: "Before & After Reports",
-    text: "Every finished visit posts a service report with before/after photos to your portal — a permanent record for you, your insurance company, and your inspectors.",
+    text: "Every finished visit posts a service report with before/after photos to your portal. A permanent record for you, your insurance company, and your inspectors.",
   },
   {
     icon: CreditCard,
@@ -38,7 +38,7 @@ export function RecurringSection() {
             Clean It Once. <span className="text-primary">Then Let Us Remember the Rest.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Most kitchens don&apos;t fail inspections because nobody cares — they fail because
+            Most kitchens don&apos;t fail inspections because nobody cares. They fail because
             nobody remembered. Put your equipment on a Dirty Dawgz service plan and we track
             every schedule and contact you when you&apos;re due. And unlike anyone else in this
             business, we give you the software to see it all: every Dirty Dawgz customer gets
@@ -84,7 +84,7 @@ export function RecurringSection() {
             </a>
           </Button>
           <p className="text-center text-sm text-muted-foreground sm:ml-2 sm:text-left">
-            No passwords — enter your billing email and your portal link is sent to you.
+            No passwords. Enter your billing email and your portal link is sent to you.
             <ArrowUpRight className="ml-1 inline h-3.5 w-3.5" />
           </p>
         </Reveal>

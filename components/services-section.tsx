@@ -26,7 +26,7 @@ const services = [
     href: "/hoodcleaning",
     tagline: "Hoods • Ducts • Rooftop Fans",
     description:
-      "Complete commercial kitchen exhaust cleaning to NFPA 96 standards — hoods, filters, plenums, ductwork, and rooftop exhaust fans. Your first line of defense against grease fires, fully documented.",
+      "Complete commercial kitchen exhaust cleaning to NFPA 96 standards: hoods, filters, plenums, ductwork, and rooftop exhaust fans. Your first line of defense against grease fires, fully documented.",
     features: [
       "Hood-to-rooftop system cleaning",
       "NFPA 96 compliance & certificate",
@@ -42,7 +42,7 @@ const services = [
     href: "/greasetrapcleaning",
     tagline: "Pump-Outs • Scraping • Compliance",
     description:
-      "Scheduled grease trap cleaning built for restaurants and commercial kitchens. Full pump-outs, wall and baffle scraping, and compliant disposal — with service records for every visit.",
+      "Scheduled grease trap cleaning built for restaurants and commercial kitchens. Full pump-outs, wall and baffle scraping, and compliant disposal, with service records for every visit.",
     features: [
       "Full pump-out and disposal",
       "Wall and baffle scraping",
@@ -65,7 +65,7 @@ export function ServicesSection() {
             We Do the <span className="text-primary">Dirty Work.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Ovens, hood systems, and grease traps — the greasiest equipment in a commercial
+            Ovens, hood systems, and grease traps. The greasiest equipment in a commercial
             kitchen is all we do. Businesses across Michigan trust the Dawgz to keep their
             kitchens safe, efficient, and code-compliant.
           </p>

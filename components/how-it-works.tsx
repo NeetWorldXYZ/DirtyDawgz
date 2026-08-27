@@ -6,7 +6,7 @@ const steps = [
   {
     number: "01",
     title: "Request a Quote",
-    description: "Tell us about your kitchen and equipment. Photos help — our quote form takes them.",
+    description: "Tell us about your kitchen and equipment. Photos help, and our quote form takes them.",
   },
   {
     number: "02",

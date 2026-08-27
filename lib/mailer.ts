@@ -3,7 +3,7 @@
  *
  * Resend first, SMTP second.
  *
- * The SMTP path stopped delivering while reporting success — nodemailer
+ * The SMTP path stopped delivering while reporting success - nodemailer
  * accepted the message, the function returned 200, and nothing arrived. That
  * failure lives somewhere between the relay and the mailbox, which is not
  * somewhere code can reach. Resend is already proven on this domain, so it

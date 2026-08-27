@@ -46,7 +46,7 @@ const serviceOptions = [
   },
 ]
 
-/** Shared field styling — squared-off, red focus, matches the industrial theme. */
+/** Shared field styling - squared-off, red focus, matches the industrial theme. */
 const fieldCls =
   "rounded-none border-border bg-card text-card-foreground focus-visible:border-primary focus-visible:ring-primary/30"
 
@@ -302,7 +302,7 @@ export function QuoteForm() {
           </p>
         )}
 
-        {/* Other service write-in — right below the tiles so it opens in place */}
+        {/* Other service write-in - right below the tiles so it opens in place */}
         {selectedServices.includes("other") && (
           <div className="mt-3 border-l-4 border-primary bg-primary/5 p-5">
             <div className="flex flex-col gap-2">
@@ -313,7 +313,7 @@ export function QuoteForm() {
                 id="other-details"
                 name="otherDetails"
                 required
-                placeholder="Tell us exactly what needs cleaning — fryers, flat tops, walk-in coolers, full kitchen deep clean, whatever it is. If we can't do it, we'll tell you straight."
+                placeholder="Tell us exactly what needs cleaning: fryers, flat tops, walk-in coolers, full kitchen deep clean, whatever it is. If we can't do it, we'll tell you straight."
                 className={fieldCls}
                 rows={4}
               />
@@ -321,7 +321,7 @@ export function QuoteForm() {
           </div>
         )}
 
-        {/* Recurring service plan — the money-saver banner, styled apart from the tiles */}
+        {/* Recurring service plan - the money-saver banner, styled apart from the tiles */}
         <button
           type="button"
           role="checkbox"
@@ -345,7 +345,7 @@ export function QuoteForm() {
                 Save with a recurring service plan
               </p>
               <p className="mt-1 text-xs leading-relaxed text-white/65 sm:text-sm">
-                Plan customers get discounted recurring rates — and we track your cleaning
+                Plan customers get discounted recurring rates, and we track your cleaning
                 schedule and contact you when equipment is due, so you never have to remember
                 a date.
               </p>
@@ -364,7 +364,7 @@ export function QuoteForm() {
               planInterest ? "text-primary" : "text-white/40"
             }`}
           >
-            {planInterest ? "✓ Added — we'll include plan pricing in your quote" : "Tap to add plan pricing to your quote"}
+            {planInterest ? "✓ Added. We'll include plan pricing in your quote" : "Tap to add plan pricing to your quote"}
           </p>
         </button>
       </div>

@@ -28,7 +28,7 @@ export function ServiceAreaSection() {
               Wherever your commercial kitchen is, we&apos;ll come to you.
             </p>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-white/45">
-              One location or twenty — we service independent restaurants and multi-location
+              One location or twenty, we service independent restaurants and multi-location
               groups on the same documented, scheduled program.
             </p>
             <Button

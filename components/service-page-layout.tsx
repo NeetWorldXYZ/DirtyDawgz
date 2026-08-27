@@ -36,7 +36,7 @@ interface ServicePageProps {
   /** Schema.org service name, e.g. "Commercial Hood Cleaning" */
   schemaServiceName: string
   schemaDescription: string
-  /** Page path, e.g. "/hoodcleaning" — used for schema URLs and breadcrumbs */
+  /** Page path, e.g. "/hoodcleaning" - used for schema URLs and breadcrumbs */
   path: string
 }
 

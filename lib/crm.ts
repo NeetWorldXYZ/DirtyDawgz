@@ -4,7 +4,7 @@
  * Called server-side from /api/quote, alongside the existing PDF email. That
  * ordering matters: the email is the behaviour the business already relies on,
  * so nothing here is allowed to break it. Every failure is swallowed and
- * logged — a CRM outage must never cost a real enquiry.
+ * logged - a CRM outage must never cost a real enquiry.
  *
  * Server-to-server, so there is no CORS involved and the browser never sees
  * the CRM's address.
@@ -17,8 +17,8 @@ const CRM_ENDPOINT =
 /**
  * The service-specific answers, folded into one readable block.
  *
- * These are the questions that decide the price — deck count, trap size, hood
- * length — so they belong on the lead itself rather than only in an email
+ * These are the questions that decide the price - deck count, trap size, hood
+ * length - so they belong on the lead itself rather than only in an email
  * attachment nobody can search.
  */
 function buildDetails(data: any): string {
