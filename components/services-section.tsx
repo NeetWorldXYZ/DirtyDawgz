@@ -62,7 +62,7 @@ export function ServicesSection() {
             What We Do
           </p>
           <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase leading-none tracking-tight sm:text-4xl text-foreground md:text-5xl">
-            Three Dirty Jobs. <span className="text-primary">One Specialty.</span>
+            We Do the <span className="text-primary">Dirty Work.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Ovens, hood systems, and grease traps — the greasiest equipment in a commercial
