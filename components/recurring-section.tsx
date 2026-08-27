@@ -88,6 +88,15 @@ export function RecurringSection() {
             <ArrowUpRight className="ml-1 inline h-3.5 w-3.5" />
           </p>
         </Reveal>
+
+        <Reveal delay={250} className="mt-8">
+          <p className="max-w-2xl text-base italic leading-relaxed text-muted-foreground">
+            Booking a hood cleaning shouldn&apos;t be harder than booking a haircut.{" "}
+            <span className="font-medium not-italic text-foreground">
+              For our customers, it isn&apos;t.
+            </span>
+          </p>
+        </Reveal>
       </div>
     </section>
   )
