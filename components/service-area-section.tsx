@@ -19,7 +19,7 @@ export function ServiceAreaSection() {
             <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
               Service Area
             </p>
-            <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-white md:text-5xl">
+            <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase leading-none tracking-tight sm:text-4xl text-white md:text-5xl">
               Built in Michigan. <span className="text-primary">Cleaning Kitchens Across Michigan.</span>
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/60">

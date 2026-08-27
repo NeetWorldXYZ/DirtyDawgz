@@ -10,7 +10,7 @@ export function CtaBanner() {
       <div className="dd-stripes absolute inset-0 opacity-60" />
       <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
       <Reveal className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 text-center lg:px-8">
-        <h2 className="font-[family-name:var(--font-oswald)] text-5xl font-bold uppercase leading-none tracking-tight text-primary-foreground md:text-7xl">
+        <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-primary-foreground sm:text-5xl md:text-7xl">
           Got a Dirty Kitchen?
         </h2>
         <p className="font-[family-name:var(--font-oswald)] text-2xl font-semibold uppercase tracking-[0.25em] text-primary-foreground/90 md:text-3xl">

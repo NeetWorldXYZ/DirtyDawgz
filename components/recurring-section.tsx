@@ -34,7 +34,7 @@ export function RecurringSection() {
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             Recurring Service + Customer Portal
           </p>
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-foreground md:text-5xl">
+          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase leading-none tracking-tight sm:text-4xl text-foreground md:text-5xl">
             Clean It Once. <span className="text-primary">Then Let Us Remember the Rest.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
@@ -64,7 +64,7 @@ export function RecurringSection() {
           ))}
         </div>
 
-        <Reveal delay={150} className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <Reveal delay={150} className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <Button
             asChild
             size="lg"
@@ -83,14 +83,14 @@ export function RecurringSection() {
               Customer Login
             </a>
           </Button>
-          <p className="text-sm text-muted-foreground sm:ml-2">
+          <p className="text-center text-sm text-muted-foreground sm:ml-2 sm:text-left">
             No passwords — enter your billing email and your portal link is sent to you.
             <ArrowUpRight className="ml-1 inline h-3.5 w-3.5" />
           </p>
         </Reveal>
 
         <Reveal delay={250} className="mt-8">
-          <p className="max-w-2xl text-base italic leading-relaxed text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-center text-base italic leading-relaxed text-muted-foreground sm:mx-0 sm:text-left">
             Booking a hood cleaning shouldn&apos;t be harder than booking a haircut.{" "}
             <span className="font-medium not-italic text-foreground">
               For our customers, it isn&apos;t.

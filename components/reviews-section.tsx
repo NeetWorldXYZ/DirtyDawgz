@@ -29,7 +29,7 @@ export function ReviewsSection() {
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             Reviews
           </p>
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-white md:text-5xl">
+          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase leading-none tracking-tight sm:text-4xl text-white md:text-5xl">
             Michigan Kitchens <span className="text-primary">Vouch for the Dawgz.</span>
           </h2>
         </Reveal>

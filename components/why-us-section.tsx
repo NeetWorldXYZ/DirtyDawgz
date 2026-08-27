@@ -60,7 +60,7 @@ export function WhyUsSection() {
           <p className="mb-3 font-[family-name:var(--font-oswald)] text-sm font-semibold uppercase tracking-[0.3em] text-primary">
             Why Dirty Dawgz
           </p>
-          <h2 className="font-[family-name:var(--font-oswald)] text-4xl font-bold uppercase leading-none tracking-tight text-foreground md:text-5xl">
+          <h2 className="font-[family-name:var(--font-oswald)] text-3xl font-bold uppercase leading-none tracking-tight sm:text-4xl text-foreground md:text-5xl">
             Not Your Average <span className="text-primary">Cleaning Company.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
