@@ -5,6 +5,27 @@ import { Button } from "@/components/ui/button"
 import { HeroAmbient } from "@/components/hero-ambient"
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/site"
 
+/** Four-point clean-glint sparkle, the "freshly polished" shine. */
+function Sparkle({ className, style }: { className?: string; style?: React.CSSProperties }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} style={style} aria-hidden>
+      <path
+        d="M12 0 C13.2 7.5 16.5 10.8 24 12 C16.5 13.2 13.2 16.5 12 24 C10.8 16.5 7.5 13.2 0 12 C7.5 10.8 10.8 7.5 12 0 Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+const sparkles = [
+  { pos: "right-[14%] top-[13%]", size: "h-6 w-6", color: "text-white", dur: "6.5s", delay: "0s" },
+  { pos: "left-[10%] top-[38%]", size: "h-4 w-4", color: "text-white/90", dur: "8s", delay: "2.1s" },
+  { pos: "right-[9%] top-[55%]", size: "h-5 w-5", color: "text-primary", dur: "7.5s", delay: "3.6s" },
+  { pos: "left-[18%] bottom-[14%]", size: "h-5 w-5", color: "text-white", dur: "9s", delay: "5.2s" },
+  { pos: "right-[26%] bottom-[8%]", size: "h-3.5 w-3.5", color: "text-white/80", dur: "6s", delay: "1.2s" },
+  { pos: "left-[30%] top-[8%]", size: "h-4 w-4", color: "text-white/90", dur: "8.5s", delay: "6.4s" },
+]
+
 export function HeroSection() {
   return (
     <section className="dd-stripes relative flex min-h-[calc(100svh-77px)] flex-col overflow-hidden bg-[#141414] text-secondary-foreground">
@@ -114,6 +135,15 @@ export function HeroSection() {
               className="relative w-[21.5rem] rounded-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)] xl:w-[24.5rem]"
               priority
             />
+
+            {/* Clean-glint sparkles popping around the badge rim */}
+            {sparkles.map((s, i) => (
+              <Sparkle
+                key={i}
+                className={`dd-sparkle absolute ${s.pos} ${s.size} ${s.color}`}
+                style={{ "--sparkle-dur": s.dur, "--sparkle-delay": s.delay } as React.CSSProperties}
+              />
+            ))}
           </div>
         </div>
       </div>

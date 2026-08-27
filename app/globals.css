@@ -335,11 +335,38 @@ section[id] {
   animation: dd-float 7s ease-in-out infinite;
 }
 
+/* Clean-glint sparkles that pop around the badge rim at staggered moments */
+@keyframes dd-sparkle {
+  0%,
+  100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  6% {
+    transform: scale(1) rotate(20deg);
+    opacity: 1;
+  }
+  12% {
+    transform: scale(0) rotate(40deg);
+    opacity: 0;
+  }
+}
+.dd-sparkle {
+  transform: scale(0);
+  opacity: 0;
+  animation: dd-sparkle var(--sparkle-dur, 7s) ease-in-out infinite;
+  animation-delay: var(--sparkle-delay, 0s);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dd-spin-slow,
   .dd-spin-rev,
   .dd-float {
     animation: none;
+  }
+  .dd-sparkle {
+    animation: none;
+    opacity: 0;
   }
 }
 
