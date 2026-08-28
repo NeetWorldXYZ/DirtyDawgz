@@ -219,7 +219,7 @@ export function ServicePageLayout({
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {process.map((item, i) => (
                   <Reveal key={item.step} delay={i * 110}>
-                    <span className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-white/10">
+                    <span className="font-[family-name:var(--font-oswald)] text-5xl font-bold text-white/60">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="mt-3 h-0.5 w-10 bg-primary" />

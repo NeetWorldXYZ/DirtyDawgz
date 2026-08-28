@@ -95,7 +95,7 @@ export function HowSteps({ steps }: { steps: Step[] }) {
               } as React.CSSProperties
             }
           >
-            <span className="dd-step-num font-[family-name:var(--font-oswald)] text-4xl font-bold text-white/10 sm:text-6xl">
+            <span className="dd-step-num font-[family-name:var(--font-oswald)] text-4xl font-bold text-white/60 sm:text-6xl">
               {step.number}
             </span>
             <div className="dd-step-rest">
