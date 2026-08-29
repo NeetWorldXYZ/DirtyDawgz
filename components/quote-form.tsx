@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
+import { attributionPayload } from "@/lib/attribution"
 import {
   Select,
   SelectContent,
@@ -177,6 +178,11 @@ export function QuoteForm() {
 
     data.numberOfLocations = multipleLocations ? numberOfLocationsValue : "1"
     data.servicePlanInterest = planInterest ? "Yes" : "No"
+
+    // Google Ads click IDs and campaign tags captured when the visitor first
+    // landed. Merged under the form fields so a stray input named `page` can
+    // never clobber the stored landing page.
+    Object.assign(data, attributionPayload())
 
     if (photoFiles.length > 0) {
       const maxBytes = MAX_PHOTO_SIZE_MB * 1024 * 1024

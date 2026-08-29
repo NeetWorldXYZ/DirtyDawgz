@@ -10,6 +10,8 @@
  * the CRM's address.
  */
 
+import { CLICK_ID_FIELDS, UTM_FIELDS, clampField } from "@/lib/attribution";
+
 const CRM_ENDPOINT =
   process.env.CRM_LEAD_ENDPOINT ||
   "https://app.dirtydawgzovencleaning.com/api/public/lead-form";
@@ -83,6 +85,20 @@ function buildDetails(data: any): string {
   return blocks.join("\n\n");
 }
 
+/**
+ * Google Ads click IDs and campaign tags, clamped to the lengths the CRM's
+ * schema accepts. Absent fields are simply left off: a direct visitor posts
+ * exactly the payload they always did.
+ */
+function attributionFields(data: any): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const key of [...CLICK_ID_FIELDS, ...UTM_FIELDS]) {
+    const value = clampField(key, data[key]);
+    if (value) out[key] = value;
+  }
+  return out;
+}
+
 export async function sendLeadToCrm(
   data: any,
   context: { page?: string | null; referrer?: string | null } = {}
@@ -110,11 +126,12 @@ export async function sendLeadToCrm(
         ? [String(data.services)]
         : undefined,
     message: buildDetails(data) || undefined,
-    page: context.page || undefined,
-    referrer: context.referrer || undefined,
-    utm_source: data.utm_source || undefined,
-    utm_medium: data.utm_medium || undefined,
-    utm_campaign: data.utm_campaign || undefined,
+    // The landing page the visitor was tagged on beats the referer header,
+    // which only ever reports the page the form happened to sit on.
+    page: clampField("page", data.page) || clampField("page", context.page) || undefined,
+    referrer:
+      clampField("referrer", data.referrer) || clampField("referrer", context.referrer) || undefined,
+    ...attributionFields(data),
     // Deliberately no submission_id and nothing time-based in the payload:
     // the CRM falls back to hashing the body, so a retry of the same
     // submission resolves to the same lead instead of creating a second.
